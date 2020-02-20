@@ -116,6 +116,20 @@ for col in range(3):
 buttons_frame = ttk.LabelFrame(mighty, text=' Labels in a Frame ')
 buttons_frame.grid(column=0, row=7)
 
+MODES = [
+        ("Monochrome", "1"),
+        ("Grayscale", "L"),
+        ("True color", "RGB"),
+        ("Color separation", "CMYK"),
+    ]
+v = tk.IntVar()
+v.set("L") # initialize
+
+for text, mode in MODES:
+    b = tk.Radiobutton(win, text=text,
+                        variable=v, value=mode)
+    b.pack(anchor='w')
+
 # Place labels into the container element
 ttk.Label(buttons_frame, text="Label1").grid(column=0, row=0, sticky=tk.W)
 ttk.Label(buttons_frame, text="Label2").grid(column=1, row=0, sticky=tk.W)
