@@ -11,8 +11,8 @@ def change_to_frame1():
     fm1.radiobutton(background_color, rad_var_color)
     fm1.radiobutton(human_face, rad_var_face)
     fm1.label(frame1_number)
-    name=fm1.entry(300,100,40)
-    support=fm1.entry(300,200,40)
+    fm1.entry(300,100,40,name)
+    fm1.entry(300,200,40,support)
 
 def change_to_frame2():
     fm2 = Frame(window, tags='frame2')
@@ -49,11 +49,9 @@ class Frame:
                         compound='left', padx=15)
         btn.place(x=557, y=10)
 
-    def entry(self,x,y,width):
-        self.name = tk.Entry(self.frame, width=width)
+    def entry(self,x,y,width,name):
+        self.name = tk.Entry(self.frame, width=width,textvariable=name)
         self.name.place(x=x, y=y)
-        var=self.name.get()
-        return var
 
     def label(self, label):
         # tk.Label(self.frame, text=self.tags).place(x=label_x, y=label_y)
@@ -198,8 +196,8 @@ rad_var_color.set(0)
 rad_var_face.set(0)
 name=tk.StringVar()
 support=tk.StringVar()
-name.set(0)
-support.set(0)
+name.set('')
+support.set('')
 change_to_frame1()
 
 window.mainloop()
