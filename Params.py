@@ -1,7 +1,7 @@
 import json
 
 
-class params:
+class Params:
     """Class that loads hyperparameters from a json file.
         Example:
         ```
