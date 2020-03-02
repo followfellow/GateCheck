@@ -61,10 +61,10 @@ def change_to_frame4():
     fm4.checkbutton(idcard_check, read_parameters.idcard_check_var, command=idcard_check_command)
     fm4.checkbutton(code_check, read_parameters.code_check_var, command=code_check_command)
     temp1 = read_parameters.code_check_var.get()
-    if temp1 == "1":
+    if temp1 == 1:
         fm4.radiobutton(code_com, read_parameters.code_com_var)
     temp2 = read_parameters.idcard_check_var.get()
-    if temp2 == "1":
+    if temp2 == 1:
         fm4.radiobutton(idcard_set, read_parameters.idcard_set_var)
 
 
@@ -228,8 +228,8 @@ if __name__ == '__main__':
             "gate_mode": "单向入口",
         },
         "Reader": {
-            "code_check": "1",
-            "idcard_check": "1",
+            "code_check": 1,
+            "idcard_check": 1,
             "code_com": "COM3",
             "idcard_set": "synjo+RFID",
         },
