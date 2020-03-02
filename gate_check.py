@@ -12,19 +12,17 @@ global label_img
 
 
 def code_check_command():
-    change_to_frame4()
-    # if read_parameters.code_check_var.get() == "1":
-    #     change_to_frame4()
-    # else:
-    #     change_to_frame4()
+    if read_parameters.code_check_var.get() == 1:
+        change_to_frame4()
+    else:
+        change_to_frame4()
 
 
 def idcard_check_command():
-    change_to_frame4()
-    # if read_parameters.idcard_check_var.get() == "1":
-    #     change_to_frame4()
-    # else:
-    #     change_to_frame4()
+    if read_parameters.idcard_check_var.get() == 1:
+        change_to_frame4()
+    else:
+        change_to_frame4()
 
 
 def change_to_frame1():
