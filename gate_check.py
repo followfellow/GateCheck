@@ -1,7 +1,7 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 import json
-from Params import Params
+from Params import Params, ReadParameters
 import os
 from Dicts import Layouts
 
@@ -12,60 +12,66 @@ global label_img
 
 
 def code_check_command():
-    if code_check_var.get() == 1:
-        change_to_frame4()
-    else:
-        change_to_frame4()
+    change_to_frame4()
+    # if read_parameters.code_check_var.get() == "1":
+    #     change_to_frame4()
+    # else:
+    #     change_to_frame4()
 
 
 def idcard_check_command():
-    if idcard_check_var.get() == 1:
-        change_to_frame4()
-    else:
-        change_to_frame4()
+    change_to_frame4()
+    # if read_parameters.idcard_check_var.get() == "1":
+    #     change_to_frame4()
+    # else:
+    #     change_to_frame4()
 
 
 def change_to_frame1():
     fm1 = Frame(window, canvas, tags='frame1')
     # fm1.image(0, 0, 'images/1.1.jpg')
-    fm1.radiobutton(background_color, background_color_var)
-    fm1.radiobutton(human_face, human_face_var)
+    fm1.radiobutton(background_color, read_parameters.background_color_var)
+    fm1.radiobutton(human_face, read_parameters.human_face_var)
     fm1.label(frame1_number)
-    fm1.entry(250, 100, 40, name_var)
-    fm1.entry(250, 200, 40, support_var)
+    fm1.entry(250, 100, 40, read_parameters.name_var)
+    fm1.entry(250, 200, 40, read_parameters.support_var)
+    fm1.entry(250, 300, 40, read_parameters.URL_var)
+    fm1.entry(250, 350, 40, read_parameters.GateNum_var)
 
 
 def change_to_frame2():
     fm2 = Frame(window, canvas, tags='frame2')
     # fm2.image(0, 0, 'images/3.1.jpg')
     fm2.label(frame2_number)
-    fm2.radiobutton(gate_form, gate_form_var)
-    fm2.radiobutton(three, three_var)
-    fm2.radiobutton(wing, wing_var)
-    fm2.radiobutton(swing, swing_var)
+    fm2.radiobutton(gate_form, read_parameters.gate_form_var)
+    fm2.radiobutton(three, read_parameters.three_var)
+    fm2.radiobutton(wing, read_parameters.wing_var)
+    fm2.radiobutton(swing, read_parameters.swing_var)
 
 
 def change_to_frame3():
     fm3 = Frame(window, canvas, tags='frame3')
     fm3.label(frame3_number)
-    fm3.radiobutton(gate_mode, gate_mode_var)
+    fm3.radiobutton(gate_mode, read_parameters.gate_mode_var)
 
 
 def change_to_frame4():
     fm4 = Frame(window, canvas, tags='frame4')
     fm4.label(frame4_number)
-    if code_check_var.get() == 1:
-        fm4.radiobutton(code_com, code_com_var)
-    fm4.checkbutton(code_check, code_check_var, command=code_check_command)
-    if idcard_check_var.get() == 1:
-        fm4.radiobutton(idcard_set, idcard_set_var)
-    fm4.checkbutton(idcard_check, idcard_check_var, command=idcard_check_command)
+    fm4.checkbutton(idcard_check, read_parameters.idcard_check_var, command=idcard_check_command)
+    fm4.checkbutton(code_check, read_parameters.code_check_var, command=code_check_command)
+    temp1 = read_parameters.code_check_var.get()
+    if temp1 == "1":
+        fm4.radiobutton(code_com, read_parameters.code_com_var)
+    temp2 = read_parameters.idcard_check_var.get()
+    if temp2 == "1":
+        fm4.radiobutton(idcard_set, read_parameters.idcard_set_var)
 
 
 def change_to_frame5():
     fm5 = Frame(window, canvas, tags='frame5')
     fm5.label(frame5_number)
-    fm5.radiobutton(screen, screen_var)
+    fm5.radiobutton(screen, read_parameters.screen_var)
 
 
 class Frame:
@@ -107,20 +113,22 @@ class Frame:
             tk.Label(self.frame, text=text, bg=color, width=width).place(x=x, y=y)
 
     def save(self):
-        par.dict['BasePar']['name'] = name_var.get()
-        par.dict['BasePar']['image'] = background_color_var.get()
-        par.dict['BasePar']['support'] = support_var.get()
-        par.dict['BasePar']['face'] = human_face_var.get()
-        par.dict['GateForm']['gate_form'] = gate_form_var.get()
-        par.dict['GateForm']['three'] = three_var.get()
-        par.dict['GateForm']['wing'] = wing_var.get()
-        par.dict['GateForm']['swing'] = swing_var.get()
-        par.dict['GateMode']['gate_mode'] = gate_mode_var.get()
-        par.dict['Reader']['code_check'] = code_check_var.get()
-        par.dict['Reader']['code_com'] = code_com_var.get()
-        par.dict['Reader']['idcard_check'] = idcard_check_var.get()
-        par.dict['Reader']['idcard_set'] = idcard_set_var.get()
-        par.dict['Screen']['screen'] = screen_var.get()
+        par.dict['BasePar']['name'] = read_parameters.name_var.get()
+        par.dict['BasePar']['image'] = read_parameters.background_color_var.get()
+        par.dict['BasePar']['support'] = read_parameters.support_var.get()
+        par.dict['BasePar']['face'] = read_parameters.human_face_var.get()
+        par.dict['BasePar']['URL'] = read_parameters.URL_var.get()
+        par.dict['BasePar']['GateNum'] = read_parameters.GateNum_var.get()
+        par.dict['GateForm']['gate_form'] = read_parameters.gate_form_var.get()
+        par.dict['GateForm']['three'] = read_parameters.three_var.get()
+        par.dict['GateForm']['wing'] = read_parameters.wing_var.get()
+        par.dict['GateForm']['swing'] = read_parameters.swing_var.get()
+        par.dict['GateMode']['gate_mode'] = read_parameters.gate_mode_var.get()
+        par.dict['Reader']['code_check'] = read_parameters.code_check_var.get()
+        par.dict['Reader']['code_com'] = read_parameters.code_com_var.get()
+        par.dict['Reader']['idcard_check'] = read_parameters.idcard_check_var.get()
+        par.dict['Reader']['idcard_set'] = read_parameters.idcard_set_var.get()
+        par.dict['Screen']['screen'] = read_parameters.screen_var.get()
         par.save('params.json')
 
     def radiobutton(self, mode, var):
@@ -176,6 +184,11 @@ def click_button5():
 
 
 if __name__ == '__main__':
+    window = tk.Tk()
+    window.title('GateCheck')
+    window.geometry('800x600')
+    window.resizable(False, False)
+
     layout = Layouts()
     # <editor-fold desc="read_layouts">
     background_color = layout.bg_color()
@@ -202,6 +215,8 @@ if __name__ == '__main__':
             "image": "亮色",
             "support": "上海大漠电子科技股份有限公司",
             "face": "无",
+            "URL": "",
+            "GateNum": "",
         },
         "GateForm": {
             "gate_form": "三辊闸机",
@@ -213,8 +228,8 @@ if __name__ == '__main__':
             "gate_mode": "单向入口",
         },
         "Reader": {
-            "code_check": 1,
-            "idcard_check": 1,
+            "code_check": "1",
+            "idcard_check": "1",
             "code_com": "COM3",
             "idcard_set": "synjo+RFID",
         },
@@ -223,52 +238,26 @@ if __name__ == '__main__':
         }
     }
     json_str = json.dumps(parameters, indent=4)
-
     if os.path.isfile('params.json'):
-        with open('params.json', 'r') as f:
-            a = json.load(f)
+        try:
+            with open('params.json', 'r') as f:
+                a = json.load(f)
+            par = Params('params.json')
+            read_parameters = ReadParameters()
+            read_parameters.read_params(par)
+        except:
+            with open('params.json', 'w') as f:  # 创建一个params.json文件
+                f.write(json_str)  # 将json_str写到文件中
+            par = Params('params.json')
+            read_parameters = ReadParameters()
+            read_parameters.read_params(par)
     else:
         with open('params.json', 'w') as f:  # 创建一个params.json文件
             f.write(json_str)  # 将json_str写到文件中
+        par = Params('params.json')
+        read_parameters = ReadParameters()
+        read_parameters.read_params(par)
 
-    par = Params('params.json')
-
-    window = tk.Tk()
-    window.title('GateCheck')
-
-    window.geometry('800x600')
-    window.resizable(False, False)
-    # <editor-fold desc="read_para">
-    background_color_var = tk.StringVar()
-    background_color_var.set(par.dict['BasePar']['image'])
-    human_face_var = tk.StringVar()
-    human_face_var.set(par.dict['BasePar']['face'])
-    name_var = tk.StringVar()
-    name_var.set(par.dict['BasePar']['name'])
-    support_var = tk.StringVar()
-    support_var.set(par.dict['BasePar']['support'])
-    gate_form_var = tk.StringVar()
-    gate_form_var.set(par.dict['GateForm']['gate_form'])
-    three_var = tk.StringVar()
-    three_var.set(par.dict['GateForm']['three'])
-    wing_var = tk.StringVar()
-    wing_var.set(par.dict['GateForm']['wing'])
-    swing_var = tk.StringVar()
-    swing_var.set(par.dict['GateForm']['swing'])
-    gate_mode_var = tk.StringVar()
-    gate_mode_var.set(par.dict['GateMode']['gate_mode'])
-    code_check_var = tk.IntVar()
-    code_check_var.set(par.dict['Reader']['code_check'])
-    idcard_check_var = tk.IntVar()
-    idcard_check_var.set(par.dict['Reader']['idcard_check'])
-    code_com_var = tk.StringVar()
-    code_com_var.set(par.dict['Reader']['code_com'])
-    idcard_set_var = tk.StringVar()
-    idcard_set_var.set(par.dict['Reader']['idcard_set'])
-    screen_var = tk.StringVar()
-    screen_var.set(par.dict['Screen']['screen'])
-
-    # </editor-fold>
     # 画布放置图片
     canvas = tk.Canvas(window, height=800, width=800)
     pil_image = Image.open('images/6.jpg')
@@ -312,5 +301,4 @@ if __name__ == '__main__':
     change_to_frame4()
     change_to_frame5()
     change_to_frame1()
-
     window.mainloop()

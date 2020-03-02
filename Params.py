@@ -1,4 +1,5 @@
 import json
+import tkinter as tk
 
 
 class Params:
@@ -10,6 +11,7 @@ class Params:
         params.learning_rate = 0.5  # change the value of learning_rate in params
         ```
         """
+
     def __init__(self, json_path):
         with open(json_path) as f:
             params = json.load(f)  # 将json格式数据转换为字典
@@ -29,3 +31,41 @@ class Params:
     def dict(self):
         """Gives dict-like access to Params instance by `params.dict['learning_rate']"""
         return self.__dict__
+
+
+class ReadParameters():
+    def __init__(self):
+        self.background_color_var = tk.StringVar()
+        self.human_face_var = tk.StringVar()
+        self.name_var = tk.StringVar()
+        self.support_var = tk.StringVar()
+        self.URL_var = tk.StringVar()
+        self.GateNum_var = tk.StringVar()
+        self.gate_form_var = tk.StringVar()
+        self.three_var = tk.StringVar()
+        self.wing_var = tk.StringVar()
+        self.swing_var = tk.StringVar()
+        self.gate_mode_var = tk.StringVar()
+        self.code_check_var = tk.StringVar()
+        self.idcard_check_var = tk.StringVar()
+        self.code_com_var = tk.StringVar()
+        self.idcard_set_var = tk.StringVar()
+        self.screen_var = tk.StringVar()
+
+    def read_params(self, par):
+        self.background_color_var.set(par.dict['BasePar']['image'])
+        self.human_face_var.set(par.dict['BasePar']['face'])
+        self.name_var.set(par.dict['BasePar']['name'])
+        self.support_var.set(par.dict['BasePar']['support'])
+        self.URL_var.set(par.dict['BasePar']['URL'])
+        self.GateNum_var.set(par.dict['BasePar']['GateNum'])
+        self.gate_form_var.set(par.dict['GateForm']['gate_form'])
+        self.three_var.set(par.dict['GateForm']['three'])
+        self.wing_var.set(par.dict['GateForm']['wing'])
+        self.swing_var.set(par.dict['GateForm']['swing'])
+        self.gate_mode_var.set(par.dict['GateMode']['gate_mode'])
+        self.code_check_var.set(par.dict['Reader']['code_check'])
+        self.idcard_check_var.set(par.dict['Reader']['idcard_check'])
+        self.code_com_var.set(par.dict['Reader']['code_com'])
+        self.idcard_set_var.set(par.dict['Reader']['idcard_set'])
+        self.screen_var.set(par.dict['Screen']['screen'])
