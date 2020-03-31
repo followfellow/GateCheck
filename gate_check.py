@@ -4,6 +4,7 @@ import json
 from Params import Params, ReadParameters
 import os
 from Dicts import Layouts
+import threading
 
 global button_image
 global img
@@ -12,24 +13,22 @@ global label_img
 
 
 def code_check_command():
-    if read_parameters.code_check_var.get() == 1:
-        change_to_frame4()
-    else:
-        change_to_frame4()
+    change_to_frame4()
 
 
 def idcard_check_command():
-    if read_parameters.idcard_check_var.get() == 1:
-        change_to_frame4()
-    else:
-        change_to_frame4()
+    change_to_frame4()
+
+
+def face_check_command():
+    change_to_frame6()
 
 
 def change_to_frame1():
-    fm1 = Frame(window, canvas, tags='frame1')
+    fm1.frame_pack()
     # fm1.image(0, 0, 'images/1.1.jpg')
     fm1.radiobutton(background_color, read_parameters.background_color_var)
-    fm1.radiobutton(human_face, read_parameters.human_face_var)
+    fm1.radiobutton(testing_mode, read_parameters.testing_mode_var)
     fm1.label(frame1_number)
     fm1.entry(250, 100, 40, read_parameters.name_var)
     fm1.entry(250, 200, 40, read_parameters.support_var)
@@ -38,7 +37,7 @@ def change_to_frame1():
 
 
 def change_to_frame2():
-    fm2 = Frame(window, canvas, tags='frame2')
+    fm2.frame_pack()
     # fm2.image(0, 0, 'images/3.1.jpg')
     fm2.label(frame2_number)
     fm2.radiobutton(gate_form, read_parameters.gate_form_var)
@@ -48,38 +47,61 @@ def change_to_frame2():
 
 
 def change_to_frame3():
-    fm3 = Frame(window, canvas, tags='frame3')
+    fm3.frame_pack()
     fm3.label(frame3_number)
     fm3.radiobutton(gate_mode, read_parameters.gate_mode_var)
 
 
 def change_to_frame4():
-    fm4 = Frame(window, canvas, tags='frame4')
+    fm4.frame_pack()
     fm4.label(frame4_number)
     fm4.checkbutton(idcard_check, read_parameters.idcard_check_var, command=idcard_check_command)
     fm4.checkbutton(code_check, read_parameters.code_check_var, command=code_check_command)
+
     temp1 = read_parameters.code_check_var.get()
     if temp1 == 1:
         fm4.radiobutton(code_com, read_parameters.code_com_var)
+
     temp2 = read_parameters.idcard_check_var.get()
     if temp2 == 1:
         fm4.radiobutton(idcard_set, read_parameters.idcard_set_var)
+        fm4.radiobutton(zkong_com, read_parameters.zkong_com_var)
 
 
 def change_to_frame5():
-    fm5 = Frame(window, canvas, tags='frame5')
+    fm5.frame_pack()
     fm5.label(frame5_number)
     fm5.radiobutton(screen, read_parameters.screen_var)
 
 
+def change_to_frame6():
+    fm6.frame_pack()
+    fm6.label(frame6_number)
+    fm6.checkbutton(face_check, read_parameters.face_check_var, command=face_check_command)
+    temp1 = read_parameters.face_check_var.get()
+    if temp1 == 1:
+        fm6.entry(250, 150, 40, read_parameters.face_ip_var)
+        fm6.entry(250, 200, 40, read_parameters.threshold_var)
+
+
+
 class Frame:
     def __init__(self, master, canvas, tags='tags'):
+
+        self.canvas = canvas
+        self.master = master
+        self.tags = tags
+
+    def frame_pack(self):
         global button_image
         global img
 
-        self.master = master
-        self.tags = tags
-        self.frame = tk.Frame(master, bg='white')
+        self.tag_list = ['frame1', 'frame2', 'frame3', 'frame4', 'frame5', 'frame6']
+        self.tag_list.remove(self.tags)
+        for i in range(0, 5):
+            self.canvas.delete(self.tag_list[i])
+        self.frame = tk.Frame(self.master, bg='white')
+
         canvas.create_window(90, 60, width=700, height=530, anchor='nw', window=self.frame, tags=self.tags)
         button_image = Image.open('images/save.png')
         img = ImageTk.PhotoImage(image=button_image)
@@ -114,7 +136,7 @@ class Frame:
         par.dict['BasePar']['name'] = read_parameters.name_var.get()
         par.dict['BasePar']['image'] = read_parameters.background_color_var.get()
         par.dict['BasePar']['support'] = read_parameters.support_var.get()
-        par.dict['BasePar']['face'] = read_parameters.human_face_var.get()
+        par.dict['BasePar']['testing'] = read_parameters.testing_mode_var.get()
         par.dict['BasePar']['URL'] = read_parameters.URL_var.get()
         par.dict['BasePar']['GateNum'] = read_parameters.GateNum_var.get()
         par.dict['GateForm']['gate_form'] = read_parameters.gate_form_var.get()
@@ -126,14 +148,30 @@ class Frame:
         par.dict['Reader']['code_com'] = read_parameters.code_com_var.get()
         par.dict['Reader']['idcard_check'] = read_parameters.idcard_check_var.get()
         par.dict['Reader']['idcard_set'] = read_parameters.idcard_set_var.get()
+        par.dict['Reader']['zkong_com'] = read_parameters.zkong_com_var.get()
         par.dict['Screen']['screen'] = read_parameters.screen_var.get()
+        par.dict['Face']['face_check'] = read_parameters.face_check_var.get()
+        par.dict['Face']['face_ip'] = read_parameters.face_ip_var.get()
+        par.dict['Face']['threshold'] = read_parameters.threshold_var.get()
         par.save('params.json')
 
-    def radiobutton(self, mode, var):
+    def radiobutton(self, mode, var, cmd=None):
         for text, mode, x, y in mode:
             rd = tk.Radiobutton(self.frame, text=text, variable=var,
-                                value=mode, bg='white')
+                                value=mode, bg='white', command=cmd)
             rd.place(x=x, y=y)
+
+
+def thread_it(func, *args):
+    '''将函数打包进线程'''
+    # 创建
+    t = threading.Thread(target=func, args=args)
+    # 守护 !!!
+    t.setDaemon(True)
+    # 启动
+    t.start()
+    # 阻塞--卡死界面！
+    # t.join()
 
 
 def click_button1():
@@ -143,6 +181,7 @@ def click_button1():
     button3.config(fg='white')
     button4.config(fg='white')
     button5.config(fg='white')
+    button6.config(fg='white')
 
 
 def click_button2():
@@ -152,6 +191,7 @@ def click_button2():
     button3.config(fg='white')
     button4.config(fg='white')
     button5.config(fg='white')
+    button6.config(fg='white')
 
 
 def click_button3():
@@ -161,6 +201,7 @@ def click_button3():
     button2.config(fg='white')
     button4.config(fg='white')
     button5.config(fg='white')
+    button6.config(fg='white')
 
 
 def click_button4():
@@ -170,6 +211,7 @@ def click_button4():
     button2.config(fg='white')
     button3.config(fg='white')
     button5.config(fg='white')
+    button6.config(fg='white')
 
 
 def click_button5():
@@ -179,6 +221,17 @@ def click_button5():
     button2.config(fg='white')
     button3.config(fg='white')
     button4.config(fg='white')
+    button6.config(fg='white')
+
+
+def click_button6():
+    change_to_frame6()
+    button6.config(fg='yellow')
+    button1.config(fg='white')
+    button2.config(fg='white')
+    button3.config(fg='white')
+    button4.config(fg='white')
+    button5.config(fg='white')
 
 
 if __name__ == '__main__':
@@ -190,12 +243,13 @@ if __name__ == '__main__':
     layout = Layouts()
     # <editor-fold desc="read_layouts">
     background_color = layout.bg_color()
-    human_face = layout.hm_face()
+    testing_mode = layout.tst_mode()
     frame1_number = layout.fm1_number()
     frame2_number = layout.fm2_number()
     frame3_number = layout.fm3_number()
     frame4_number = layout.fm4_number()
     frame5_number = layout.fm5_number()
+    frame6_number = layout.fm6_number()
     gate_form = layout.gt_form()
     three = layout.thr()
     wing = layout.wng()
@@ -205,14 +259,16 @@ if __name__ == '__main__':
     idcard_check = layout.id_check()
     code_com = layout.cd_com()
     idcard_set = layout.id_set()
+    zkong_com = layout.zk_com()
     screen = layout.scr()
+    face_check=layout.fc_check()
     # </editor-fold>
     parameters = {
         "BasePar": {
             "name": "",
             "image": "亮色",
             "support": "上海大漠电子科技股份有限公司",
-            "face": "无",
+            "testing": "否",
             "URL": "",
             "GateNum": "",
         },
@@ -230,12 +286,19 @@ if __name__ == '__main__':
             "idcard_check": 1,
             "code_com": "COM3",
             "idcard_set": "synjo+RFID",
+            "zkong_com": "COM1",
         },
         "Screen": {
             "screen": "6.5_800*600",
+        },
+        "Face": {
+            "face_check": 1,
+            "face_ip": "192.168.0.0",
+            "threshold": "50",
         }
     }
     json_str = json.dumps(parameters, indent=4)
+    # json_str = json.dumps(parameters, ensure_ascii=False,indent=4)
     if os.path.isfile('params.json'):
         try:
             with open('params.json', 'r') as f:
@@ -273,30 +336,38 @@ if __name__ == '__main__':
     tk_im_lb = ImageTk.PhotoImage(cropped_lb)
     lb = tk.Label(window, image=tk_im_lb, text='闸机管理系统', compound='center', borderwidth=0, padx=0, pady=0,
                   fg='white', font=('黑体', 13)).place(x=100, y=20)
-    button1 = tk.Button(image=tk_im, command=click_button1, text='基本参数', compound='center', borderwidth=0, padx=0,
+    button1 = tk.Button(image=tk_im, command=lambda:thread_it(click_button1), text='基本参数', compound='center', borderwidth=0, padx=0,
                         pady=0,
                         fg='yellow')
     button1.place(x=1, y=80)
-    button2 = tk.Button(image=tk_im, command=click_button2, text='闸机类型', compound='center', borderwidth=0, padx=0,
+    button2 = tk.Button(image=tk_im, command=lambda:thread_it(click_button2), text='闸机类型', compound='center', borderwidth=0, padx=0,
                         pady=0,
                         fg='white')
     button2.place(x=1, y=120)
-    button3 = tk.Button(image=tk_im, command=click_button3, text='工作模式', compound='center', borderwidth=0, padx=0,
+    button3 = tk.Button(image=tk_im, command=lambda:thread_it(click_button3), text='工作模式', compound='center', borderwidth=0, padx=0,
                         pady=0,
                         fg='white')
     button3.place(x=1, y=160)
-    button4 = tk.Button(image=tk_im, command=click_button4, text='读卡器', compound='center', borderwidth=0, padx=0,
+    button4 = tk.Button(image=tk_im, command=lambda:thread_it(click_button4), text='读卡器', compound='center', borderwidth=0, padx=0,
                         pady=0,
                         fg='white')
     button4.place(x=1, y=200)
-    button5 = tk.Button(image=tk_im, command=click_button5, text='显示器', compound='center', borderwidth=0, padx=0,
+    button5 = tk.Button(image=tk_im, command=lambda:thread_it(click_button5), text='显示器', compound='center', borderwidth=0, padx=0,
                         pady=0,
                         fg='white')
     button5.place(x=1, y=240)
+    button6 = tk.Button(image=tk_im, command=lambda: thread_it(click_button6), text='人脸识别', compound='center',
+                        borderwidth=0, padx=0,
+                        pady=0,
+                        fg='white')
+    button6.place(x=1, y=280)
     # </editor-fold>
-    change_to_frame2()
-    change_to_frame3()
-    change_to_frame4()
-    change_to_frame5()
+    fm1 = Frame(window, canvas, tags='frame1')
+    fm2 = Frame(window, canvas, tags='frame2')
+    fm3 = Frame(window, canvas, tags='frame3')
+    fm4 = Frame(window, canvas, tags='frame4')
+    fm5 = Frame(window, canvas, tags='frame5')
+    fm6 = Frame(window, canvas, tags='frame6')
     change_to_frame1()
+
     window.mainloop()

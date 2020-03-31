@@ -20,6 +20,7 @@ class Params:
     def save(self, json_path):
         with open(json_path, 'w') as f:
             json.dump(self.__dict__, f, indent=4)  # indent缩进级别进行漂亮打印
+            # json.dump(self.__dict__, f, ensure_ascii=False, indent=4)  # indent缩进级别进行漂亮打印
 
     def update(self, json_path):
         """Loads parameters from json file"""
@@ -36,7 +37,7 @@ class Params:
 class ReadParameters():
     def __init__(self):
         self.background_color_var = tk.StringVar()
-        self.human_face_var = tk.StringVar()
+        self.testing_mode_var = tk.StringVar()
         self.name_var = tk.StringVar()
         self.support_var = tk.StringVar()
         self.URL_var = tk.StringVar()
@@ -50,11 +51,15 @@ class ReadParameters():
         self.idcard_check_var = tk.IntVar()
         self.code_com_var = tk.StringVar()
         self.idcard_set_var = tk.StringVar()
+        self.zkong_com_var = tk.StringVar()
         self.screen_var = tk.StringVar()
+        self.face_check_var = tk.IntVar()
+        self.face_ip_var = tk.StringVar()
+        self.threshold_var = tk.StringVar()
 
     def read_params(self, par):
         self.background_color_var.set(par.dict['BasePar']['image'])
-        self.human_face_var.set(par.dict['BasePar']['face'])
+        self.testing_mode_var.set(par.dict['BasePar']['testing'])
         self.name_var.set(par.dict['BasePar']['name'])
         self.support_var.set(par.dict['BasePar']['support'])
         self.URL_var.set(par.dict['BasePar']['URL'])
@@ -68,4 +73,8 @@ class ReadParameters():
         self.idcard_check_var.set(par.dict['Reader']['idcard_check'])
         self.code_com_var.set(par.dict['Reader']['code_com'])
         self.idcard_set_var.set(par.dict['Reader']['idcard_set'])
+        self.zkong_com_var.set(par.dict['Reader']['zkong_com'])
         self.screen_var.set(par.dict['Screen']['screen'])
+        self.face_check_var.set(par.dict['Face']['face_check'])
+        self.face_ip_var.set(par.dict['Face']['face_ip'])
+        self.threshold_var.set(par.dict['Face']['threshold'])

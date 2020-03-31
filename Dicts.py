@@ -5,9 +5,9 @@ class Layouts:
             ('暗色', '暗色', 350, 150),
             ('其他', '其他', 450, 150)
         ]
-        self.human_face = [
-            ('有', '有', 250, 250),
-            ('无', '无', 350, 250)
+        self.testing_mode = [
+            ('是', '是', 250, 250),
+            ('否', '否', 350, 250)
         ]
         self.frame1_number = [
             ('1', 'white', '8', 50, 100),
@@ -19,7 +19,7 @@ class Layouts:
             ('景区名称', 'white', '10', 150, 100),
             ('背景图片', 'white', '10', 150, 150),
             ('技术支持', 'white', '10', 150, 200),
-            ('人脸识别', 'white', '10', 150, 250),
+            ('测试模式', 'white', '10', 150, 250),
             ('后台地址', 'white', '10', 150, 300),
             ('闸机编号', 'white', '10', 150, 350),
             ('序号', 'SkyBlue', '8', 50, 50),
@@ -62,18 +62,18 @@ class Layouts:
         self.frame4_number = [
             ('1', 'white', '8', 50, 150),
             ('1', 'white', '8', 50, 300),
+            # ('2', 'white', '8', 50, 350),
             ('2', 'white', '8', 50, 350),
-            ('3', 'white', '8', 50, 400),
-            ('4', 'white', '8', 50, 450),
+            # ('4', 'white', '8', 50, 450),
             ('主二维码', 'white', '10', 150, 150),
             ('新中新DJ1', 'white', '10', 150, 300),
-            ('新中新DJ2', 'white', '10', 150, 350),
-            ('中控1', 'white', '7', 150, 400),
-            ('中控2', 'white', '7', 150, 450),
+            # ('新中新DJ2', 'white', '10', 150, 350),
+            ('中控1', 'white', '7', 150, 350),
+            # ('中控2', 'white', '7', 150, 450),
             ('身份证+RFID卡二合一', 'white', '18', 250, 300),
-            ('身份证', 'white', '6', 250, 350),
-            ('身份证', 'white', '6', 250, 400),
-            ('身份证', 'white', '6', 250, 450),
+            # ('身份证', 'white', '6', 250, 350),
+            ('身份证+RFID', 'white', '11', 250, 350),
+            # ('身份证', 'white', '6', 250, 450),
             ('二维码门票阅读器配置', 'white', '20', 50, 70),
             ('序号', 'SkyBlue', '8', 50, 100),
             ('读卡器', 'SkyBlue', '10', 150, 100),
@@ -119,6 +119,15 @@ class Layouts:
             ('放置形式', 'SkyBlue', '18', 440, 50),
             ('选择', 'SkyBlue', '8', 580, 50)
         ]
+        self.frame6_number = [
+            ('1', 'white', '8', 50, 150),
+            ('2', 'white', '8', 50, 200),
+            ('人脸IP', 'white', '10', 150, 150),
+            ('阈值', 'white', '10', 150, 200),
+            ('序号', 'SkyBlue', '8', 50, 100),
+            ('项目名称', 'SkyBlue', '10', 150, 100),
+            ('参数设置', 'SkyBlue', '44', 250, 100)
+        ]
         self.gate_form = [
             ('', '三辊闸机', 600, 100),
             ('', '翼闸', 600, 150),
@@ -163,9 +172,15 @@ class Layouts:
         ]
         self.idcard_set = [
             ('', 'synjo+RFID', 600, 300),
-            ('', 'synjo', 600, 350),
-            ('', 'zk1', 600, 400),
-            ('', 'zk2', 600, 450)
+            # ('', 'synjo', 600, 350),
+            ('', 'zk1+RFID', 600, 350),
+            # ('', 'zk2', 600, 450)
+        ]
+        self.zkong_com = [
+            ('COM1', 'COM1', 250, 400),
+            ('COM2', 'COM2', 330, 400),
+            ('COM3', 'COM3', 410, 400),
+            ('COM4', 'COM4', 490, 400)
         ]
         self.screen = [
             ('', '6.5_800*600', 600, 100),
@@ -176,12 +191,15 @@ class Layouts:
             ('', '10.2_768*1024', 600, 350),
             ('', '12.5_900*1600', 600, 400)
         ]
+        self.face_check = [
+            ('人脸识别', 100, 15),
+        ]
 
     def bg_color(self):
         return self.background_color
 
-    def hm_face(self):
-        return self.human_face
+    def tst_mode(self):
+        return self.testing_mode
 
     def fm1_number(self):
         return self.frame1_number
@@ -197,6 +215,9 @@ class Layouts:
 
     def fm5_number(self):
         return self.frame5_number
+
+    def fm6_number(self):
+        return self.frame6_number
 
     def gt_form(self):
         return self.gate_form
@@ -225,5 +246,11 @@ class Layouts:
     def id_set(self):
         return self.idcard_set
 
+    def zk_com(self):
+        return self.zkong_com
+
     def scr(self):
         return self.screen
+
+    def fc_check(self):
+        return self.face_check
