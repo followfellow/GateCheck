@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 from PIL import Image, ImageTk
 import json
 from Params import Params, ReadParameters
@@ -29,6 +30,7 @@ def change_to_frame1():
     # fm1.image(0, 0, 'images/1.1.jpg')
     fm1.radiobutton(background_color, read_parameters.background_color_var)
     fm1.radiobutton(testing_mode, read_parameters.testing_mode_var)
+    fm1.radiobutton(interface, read_parameters.Interface_var)
     fm1.label(frame1_number)
     fm1.entry(250, 100, 40, read_parameters.name_var)
     fm1.entry(250, 200, 40, read_parameters.support_var)
@@ -41,9 +43,12 @@ def change_to_frame2():
     # fm2.image(0, 0, 'images/3.1.jpg')
     fm2.label(frame2_number)
     fm2.radiobutton(gate_form, read_parameters.gate_form_var)
-    fm2.radiobutton(three, read_parameters.three_var)
-    fm2.radiobutton(wing, read_parameters.wing_var)
-    fm2.radiobutton(swing, read_parameters.swing_var)
+    # fm2.radiobutton(three, read_parameters.three_var)
+    # fm2.radiobutton(wing, read_parameters.wing_var)
+    # fm2.radiobutton(swing, read_parameters.swing_var)
+    fm2.combobox(250, 100, read_parameters.three_var, three)
+    fm2.combobox(250, 150, read_parameters.wing_var, wing)
+    fm2.combobox(250, 200, read_parameters.swing_var, swing)
 
 
 def change_to_frame3():
@@ -60,12 +65,13 @@ def change_to_frame4():
 
     temp1 = read_parameters.code_check_var.get()
     if temp1 == 1:
-        fm4.radiobutton(code_com, read_parameters.code_com_var)
-
+        # fm4.radiobutton(code_com, read_parameters.code_com_var)
+        fm4.combobox(250, 150, read_parameters.code_com_var, code_com)
     temp2 = read_parameters.idcard_check_var.get()
     if temp2 == 1:
         fm4.radiobutton(idcard_set, read_parameters.idcard_set_var)
-        fm4.radiobutton(zkong_com, read_parameters.zkong_com_var)
+        # fm4.radiobutton(zkong_com, read_parameters.zkong_com_var)
+        fm4.combobox(250, 400, read_parameters.zkong_com_var, zkong_com)
 
 
 def change_to_frame5():
@@ -82,7 +88,7 @@ def change_to_frame6():
     if temp1 == 1:
         fm6.entry(250, 150, 40, read_parameters.face_ip_var)
         fm6.entry(250, 200, 40, read_parameters.threshold_var)
-
+    # fm6.combobox(250,400,read_parameters.number_var,zhongkonglist)
 
 
 class Frame:
@@ -102,7 +108,7 @@ class Frame:
             self.canvas.delete(self.tag_list[i])
         self.frame = tk.Frame(self.master, bg='white')
 
-        canvas.create_window(90, 60, width=700, height=530, anchor='nw', window=self.frame, tags=self.tags)
+        self.canvas.create_window(90, 60, width=700, height=530, anchor='nw', window=self.frame, tags=self.tags)
         button_image = Image.open('images/save.png')
         img = ImageTk.PhotoImage(image=button_image)
         btn = tk.Button(self.frame, text='保存修改', command=self.save, bg='DodgerBlue', fg='white', image=img,
@@ -139,6 +145,7 @@ class Frame:
         par.dict['BasePar']['testing'] = read_parameters.testing_mode_var.get()
         par.dict['BasePar']['URL'] = read_parameters.URL_var.get()
         par.dict['BasePar']['GateNum'] = read_parameters.GateNum_var.get()
+        par.dict['BasePar']['Interface'] = read_parameters.Interface_var.get()
         par.dict['GateForm']['gate_form'] = read_parameters.gate_form_var.get()
         par.dict['GateForm']['three'] = read_parameters.three_var.get()
         par.dict['GateForm']['wing'] = read_parameters.wing_var.get()
@@ -153,6 +160,7 @@ class Frame:
         par.dict['Face']['face_check'] = read_parameters.face_check_var.get()
         par.dict['Face']['face_ip'] = read_parameters.face_ip_var.get()
         par.dict['Face']['threshold'] = read_parameters.threshold_var.get()
+        # par.dict['Face']['num'] = read_parameters.number_var.get()
         par.save('params.json')
 
     def radiobutton(self, mode, var, cmd=None):
@@ -160,6 +168,14 @@ class Frame:
             rd = tk.Radiobutton(self.frame, text=text, variable=var,
                                 value=mode, bg='white', command=cmd)
             rd.place(x=x, y=y)
+
+    def combobox(self, x, y, number, value):
+        cb = ttk.Combobox(self.frame, width=12, textvariable=number)
+        cb['values'] = value
+        # print(number.get())
+        # print(value.index(number.get()))
+        cb.current(value.index(number.get()))
+        cb.place(x=x, y=y)
 
 
 def thread_it(func, *args):
@@ -261,7 +277,10 @@ if __name__ == '__main__':
     idcard_set = layout.id_set()
     zkong_com = layout.zk_com()
     screen = layout.scr()
-    face_check=layout.fc_check()
+    face_check = layout.fc_check()
+    zhongkonglist = layout.zhkcom_list()
+    interface = layout.interfc()
+
     # </editor-fold>
     parameters = {
         "BasePar": {
@@ -271,12 +290,13 @@ if __name__ == '__main__':
             "testing": "否",
             "URL": "",
             "GateNum": "",
+            "Interface": "1"
         },
         "GateForm": {
             "gate_form": "三辊闸机",
-            "three": "COM2",
-            "wing": "COM2",
-            "swing": "COM2",
+            "three": "ttyS1",
+            "wing": "ttyS1",
+            "swing": "ttyS1",
         },
         "GateMode": {
             "gate_mode": "单向入口",
@@ -284,9 +304,9 @@ if __name__ == '__main__':
         "Reader": {
             "code_check": 1,
             "idcard_check": 1,
-            "code_com": "COM3",
+            "code_com": "ttyS0",
             "idcard_set": "synjo+RFID",
-            "zkong_com": "COM1",
+            "zkong_com": "ttyS2",
         },
         "Screen": {
             "screen": "6.5_800*600",
@@ -295,6 +315,7 @@ if __name__ == '__main__':
             "face_check": 1,
             "face_ip": "192.168.0.0",
             "threshold": "50",
+            # "num": "ttyS2",
         }
     }
     json_str = json.dumps(parameters, indent=4)
@@ -336,23 +357,28 @@ if __name__ == '__main__':
     tk_im_lb = ImageTk.PhotoImage(cropped_lb)
     lb = tk.Label(window, image=tk_im_lb, text='闸机管理系统', compound='center', borderwidth=0, padx=0, pady=0,
                   fg='white', font=('黑体', 13)).place(x=100, y=20)
-    button1 = tk.Button(image=tk_im, command=lambda:thread_it(click_button1), text='基本参数', compound='center', borderwidth=0, padx=0,
+    button1 = tk.Button(image=tk_im, command=lambda: thread_it(click_button1), text='基本参数', compound='center',
+                        borderwidth=0, padx=0,
                         pady=0,
                         fg='yellow')
     button1.place(x=1, y=80)
-    button2 = tk.Button(image=tk_im, command=lambda:thread_it(click_button2), text='闸机类型', compound='center', borderwidth=0, padx=0,
+    button2 = tk.Button(image=tk_im, command=lambda: thread_it(click_button2), text='闸机类型', compound='center',
+                        borderwidth=0, padx=0,
                         pady=0,
                         fg='white')
     button2.place(x=1, y=120)
-    button3 = tk.Button(image=tk_im, command=lambda:thread_it(click_button3), text='工作模式', compound='center', borderwidth=0, padx=0,
+    button3 = tk.Button(image=tk_im, command=lambda: thread_it(click_button3), text='工作模式', compound='center',
+                        borderwidth=0, padx=0,
                         pady=0,
                         fg='white')
     button3.place(x=1, y=160)
-    button4 = tk.Button(image=tk_im, command=lambda:thread_it(click_button4), text='读卡器', compound='center', borderwidth=0, padx=0,
+    button4 = tk.Button(image=tk_im, command=lambda: thread_it(click_button4), text='读卡器', compound='center',
+                        borderwidth=0, padx=0,
                         pady=0,
                         fg='white')
     button4.place(x=1, y=200)
-    button5 = tk.Button(image=tk_im, command=lambda:thread_it(click_button5), text='显示器', compound='center', borderwidth=0, padx=0,
+    button5 = tk.Button(image=tk_im, command=lambda: thread_it(click_button5), text='显示器', compound='center',
+                        borderwidth=0, padx=0,
                         pady=0,
                         fg='white')
     button5.place(x=1, y=240)

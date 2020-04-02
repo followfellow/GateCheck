@@ -9,6 +9,10 @@ class Layouts:
             ('是', '是', 250, 250),
             ('否', '否', 350, 250)
         ]
+        self.interface = [
+            ('信息公司', '1', 250, 400),
+            ('本部', '2', 350, 400)
+        ]
         self.frame1_number = [
             ('1', 'white', '8', 50, 100),
             ('2', 'white', '8', 50, 150),
@@ -16,12 +20,14 @@ class Layouts:
             ('4', 'white', '8', 50, 250),
             ('5', 'white', '8', 50, 300),
             ('6', 'white', '8', 50, 350),
+            ('7', 'white', '8', 50, 400),
             ('景区名称', 'white', '10', 150, 100),
             ('背景图片', 'white', '10', 150, 150),
             ('技术支持', 'white', '10', 150, 200),
             ('测试模式', 'white', '10', 150, 250),
             ('后台地址', 'white', '10', 150, 300),
             ('闸机编号', 'white', '10', 150, 350),
+            ('接口选择', 'white', '10', 150, 400),
             ('序号', 'SkyBlue', '8', 50, 50),
             ('项目名称', 'SkyBlue', '10', 150, 50),
             ('参数设置', 'SkyBlue', '44', 250, 50)
@@ -133,24 +139,27 @@ class Layouts:
             ('', '翼闸', 600, 150),
             ('', '摆闸', 600, 200)
         ]
-        self.three = [
-            ('COM1', 'COM1', 250, 100),
-            ('COM2', 'COM2', 330, 100),
-            ('COM3', 'COM3', 410, 100),
-            ('COM4', 'COM4', 490, 100)
-        ]
-        self.wing = [
-            ('COM1', 'COM1', 250, 150),
-            ('COM2', 'COM2', 330, 150),
-            ('COM3', 'COM3', 410, 150),
-            ('COM4', 'COM4', 490, 150)
-        ]
-        self.swing = [
-            ('COM1', 'COM1', 250, 200),
-            ('COM2', 'COM2', 330, 200),
-            ('COM3', 'COM3', 410, 200),
-            ('COM4', 'COM4', 490, 200)
-        ]
+        # self.three = [
+        #     ('COM1', 'COM1', 250, 100),
+        #     ('COM2', 'COM2', 330, 100),
+        #     ('COM3', 'COM3', 410, 100),
+        #     ('COM4', 'COM4', 490, 100)
+        # ]
+        self.three=("ttyS0","ttyS1","ttyS2","ttyS3","ttyS4","ttyS5","ttyS6","ttyS7")
+        # self.wing = [
+        #     ('COM1', 'COM1', 250, 150),
+        #     ('COM2', 'COM2', 330, 150),
+        #     ('COM3', 'COM3', 410, 150),
+        #     ('COM4', 'COM4', 490, 150)
+        # ]
+        self.wing=("ttyS0","ttyS1","ttyS2","ttyS3","ttyS4","ttyS5","ttyS6","ttyS7")
+        # self.swing = [
+        #     ('COM1', 'COM1', 250, 200),
+        #     ('COM2', 'COM2', 330, 200),
+        #     ('COM3', 'COM3', 410, 200),
+        #     ('COM4', 'COM4', 490, 200)
+        # ]
+        self.swing=("ttyS0","ttyS1","ttyS2","ttyS3","ttyS4","ttyS5","ttyS6","ttyS7")
         self.gate_mode = [
             ('', '单向入口', 600, 100),
             ('', '单出计数', 600, 150),
@@ -164,24 +173,26 @@ class Layouts:
         self.idcard_check = [
             ('身份证', 200, 15)
         ]
-        self.code_com = [
-            ('COM1', 'COM1', 250, 150),
-            ('COM2', 'COM2', 330, 150),
-            ('COM3', 'COM3', 410, 150),
-            ('COM4', 'COM4', 490, 150)
-        ]
+        # self.code_com = [
+        #     ('COM1', 'COM1', 250, 150),
+        #     ('COM2', 'COM2', 330, 150),
+        #     ('COM3', 'COM3', 410, 150),
+        #     ('COM4', 'COM4', 490, 150)
+        # ]
+        self.code_com=("ttyS0","ttyS1","ttyS2","ttyS3","ttyS4","ttyS5","ttyS6","ttyS7")
         self.idcard_set = [
             ('', 'synjo+RFID', 600, 300),
             # ('', 'synjo', 600, 350),
             ('', 'zk1+RFID', 600, 350),
             # ('', 'zk2', 600, 450)
         ]
-        self.zkong_com = [
-            ('COM1', 'COM1', 250, 400),
-            ('COM2', 'COM2', 330, 400),
-            ('COM3', 'COM3', 410, 400),
-            ('COM4', 'COM4', 490, 400)
-        ]
+        # self.zkong_com = [
+        #     ('COM1', 'COM1', 250, 400),
+        #     ('COM2', 'COM2', 330, 400),
+        #     ('COM3', 'COM3', 410, 400),
+        #     ('COM4', 'COM4', 490, 400)
+        # ]
+        self.zkong_com=("ttyS0","ttyS1","ttyS2","ttyS3","ttyS4","ttyS5","ttyS6","ttyS7")
         self.screen = [
             ('', '6.5_800*600', 600, 100),
             ('', '6.5_600*800', 600, 150),
@@ -194,6 +205,7 @@ class Layouts:
         self.face_check = [
             ('人脸识别', 100, 15),
         ]
+        self.zhkocom_list=("ttyS0","ttyS1","ttyS2","ttyS3","ttyS4","ttyS5","ttyS6","ttyS7")
 
     def bg_color(self):
         return self.background_color
@@ -254,3 +266,9 @@ class Layouts:
 
     def fc_check(self):
         return self.face_check
+
+    def zhkcom_list(self):
+        return self.zhkocom_list
+
+    def interfc(self):
+        return self.interface

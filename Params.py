@@ -42,6 +42,7 @@ class ReadParameters():
         self.support_var = tk.StringVar()
         self.URL_var = tk.StringVar()
         self.GateNum_var = tk.StringVar()
+        self.Interface_var = tk.StringVar()
         self.gate_form_var = tk.StringVar()
         self.three_var = tk.StringVar()
         self.wing_var = tk.StringVar()
@@ -56,6 +57,7 @@ class ReadParameters():
         self.face_check_var = tk.IntVar()
         self.face_ip_var = tk.StringVar()
         self.threshold_var = tk.StringVar()
+        self.number_var=tk.StringVar()
 
     def read_params(self, par):
         self.background_color_var.set(par.dict['BasePar']['image'])
@@ -64,6 +66,7 @@ class ReadParameters():
         self.support_var.set(par.dict['BasePar']['support'])
         self.URL_var.set(par.dict['BasePar']['URL'])
         self.GateNum_var.set(par.dict['BasePar']['GateNum'])
+        self.Interface_var.set(par.dict['BasePar']['Interface'])
         self.gate_form_var.set(par.dict['GateForm']['gate_form'])
         self.three_var.set(par.dict['GateForm']['three'])
         self.wing_var.set(par.dict['GateForm']['wing'])
@@ -78,3 +81,4 @@ class ReadParameters():
         self.face_check_var.set(par.dict['Face']['face_check'])
         self.face_ip_var.set(par.dict['Face']['face_ip'])
         self.threshold_var.set(par.dict['Face']['threshold'])
+        # self.number_var.set(par.dict['Face']['num'])
