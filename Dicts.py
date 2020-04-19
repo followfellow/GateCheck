@@ -128,8 +128,10 @@ class Layouts:
         self.frame6_number = [
             ('1', 'white', '8', 50, 150),
             ('2', 'white', '8', 50, 200),
+            ('3', 'white', '8', 50, 250),
             ('人脸IP', 'white', '10', 150, 150),
             ('阈值', 'white', '10', 150, 200),
+            ('类型', 'white', '10', 150, 250),
             ('序号', 'SkyBlue', '8', 50, 100),
             ('项目名称', 'SkyBlue', '10', 150, 100),
             ('参数设置', 'SkyBlue', '44', 250, 100)
@@ -206,7 +208,10 @@ class Layouts:
             ('人脸识别', 100, 15),
         ]
         self.zhkocom_list=("ttyS0","ttyS1","ttyS2","ttyS3","ttyS4","ttyS5","ttyS6","ttyS7")
-
+        self.face_mode = [
+            ('1:1', '1:1', 250, 250),
+            ('1:N', '1:N', 350, 250)
+        ]
     def bg_color(self):
         return self.background_color
 
@@ -272,3 +277,6 @@ class Layouts:
 
     def interfc(self):
         return self.interface
+
+    def fc_mode(self):
+        return self.face_mode

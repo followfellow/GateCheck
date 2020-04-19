@@ -88,6 +88,7 @@ def change_to_frame6():
     if temp1 == 1:
         fm6.entry(250, 150, 40, read_parameters.face_ip_var)
         fm6.entry(250, 200, 40, read_parameters.threshold_var)
+        fm6.radiobutton(face_mode,read_parameters.face_mode_var)
     # fm6.combobox(250,400,read_parameters.number_var,zhongkonglist)
 
 
@@ -161,6 +162,7 @@ class Frame:
         par.dict['Face']['face_ip'] = read_parameters.face_ip_var.get()
         par.dict['Face']['threshold'] = read_parameters.threshold_var.get()
         # par.dict['Face']['num'] = read_parameters.number_var.get()
+        par.dict['Face']['face_mode'] = read_parameters.face_mode_var.get()
         par.save('params.json')
 
     def radiobutton(self, mode, var, cmd=None):
@@ -280,6 +282,7 @@ if __name__ == '__main__':
     face_check = layout.fc_check()
     zhongkonglist = layout.zhkcom_list()
     interface = layout.interfc()
+    face_mode=layout.fc_mode()
 
     # </editor-fold>
     parameters = {
@@ -315,6 +318,7 @@ if __name__ == '__main__':
             "face_check": 1,
             "face_ip": "192.168.0.0",
             "threshold": "50",
+            "face_mode": "1:1"
             # "num": "ttyS2",
         }
     }
