@@ -147,21 +147,21 @@ class Layouts:
         #     ('COM3', 'COM3', 410, 100),
         #     ('COM4', 'COM4', 490, 100)
         # ]
-        self.three=("ttyS0","ttyS1","ttyS2","ttyS3","ttyS4","ttyS5","ttyS6","ttyS7")
+        self.three = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
         # self.wing = [
         #     ('COM1', 'COM1', 250, 150),
         #     ('COM2', 'COM2', 330, 150),
         #     ('COM3', 'COM3', 410, 150),
         #     ('COM4', 'COM4', 490, 150)
         # ]
-        self.wing=("ttyS0","ttyS1","ttyS2","ttyS3","ttyS4","ttyS5","ttyS6","ttyS7")
+        self.wing = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
         # self.swing = [
         #     ('COM1', 'COM1', 250, 200),
         #     ('COM2', 'COM2', 330, 200),
         #     ('COM3', 'COM3', 410, 200),
         #     ('COM4', 'COM4', 490, 200)
         # ]
-        self.swing=("ttyS0","ttyS1","ttyS2","ttyS3","ttyS4","ttyS5","ttyS6","ttyS7")
+        self.swing = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
         self.gate_mode = [
             ('', '单向入口', 600, 100),
             ('', '单出计数', 600, 150),
@@ -181,7 +181,7 @@ class Layouts:
         #     ('COM3', 'COM3', 410, 150),
         #     ('COM4', 'COM4', 490, 150)
         # ]
-        self.code_com=("ttyS0","ttyS1","ttyS2","ttyS3","ttyS4","ttyS5","ttyS6","ttyS7")
+        self.code_com = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
         self.idcard_set = [
             ('', 'synjo+RFID', 600, 300),
             # ('', 'synjo', 600, 350),
@@ -194,7 +194,7 @@ class Layouts:
         #     ('COM3', 'COM3', 410, 400),
         #     ('COM4', 'COM4', 490, 400)
         # ]
-        self.zkong_com=("ttyS0","ttyS1","ttyS2","ttyS3","ttyS4","ttyS5","ttyS6","ttyS7")
+        self.zkong_com = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
         self.screen = [
             ('', '6.5_800*600', 600, 100),
             ('', '6.5_600*800', 600, 150),
@@ -207,11 +207,18 @@ class Layouts:
         self.face_check = [
             ('人脸识别', 100, 15),
         ]
-        self.zhkocom_list=("ttyS0","ttyS1","ttyS2","ttyS3","ttyS4","ttyS5","ttyS6","ttyS7")
+        self.zhkocom_list = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
         self.face_mode = [
             ('1:1', '1:1', 250, 250),
             ('1:N', '1:N', 350, 250)
         ]
+        self.face_mode_1 = [
+            ('1:1', 250, 250)
+        ]
+        self.face_mode_n = [
+            ('1:N', 350, 250)
+        ]
+
     def bg_color(self):
         return self.background_color
 
@@ -280,3 +287,9 @@ class Layouts:
 
     def fc_mode(self):
         return self.face_mode
+
+    def fc_mode_1(self):
+        return self.face_mode_1
+
+    def fc_mode_n(self):
+        return self.face_mode_n

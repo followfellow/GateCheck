@@ -58,7 +58,9 @@ class ReadParameters():
         self.face_ip_var = tk.StringVar()
         self.threshold_var = tk.StringVar()
         self.number_var=tk.StringVar()
-        self.face_mode_var=tk.StringVar()
+        # self.face_mode_var=tk.StringVar()
+        self.face_mode_1_var=tk.IntVar()
+        self.face_mode_n_var=tk.IntVar()
 
     def read_params(self, par):
         self.background_color_var.set(par.dict['BasePar']['image'])
@@ -83,4 +85,6 @@ class ReadParameters():
         self.face_ip_var.set(par.dict['Face']['face_ip'])
         self.threshold_var.set(par.dict['Face']['threshold'])
         # self.number_var.set(par.dict['Face']['num'])
-        self.face_mode_var.set(par.dict['Face']['face_mode'])
+        # self.face_mode_var.set(par.dict['Face']['face_mode'])
+        self.face_mode_1_var.set(par.dict['Face']['face_mode_1'])
+        self.face_mode_n_var.set(par.dict['Face']['face_mode_n'])
