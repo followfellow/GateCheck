@@ -50,6 +50,7 @@ class Layouts:
             ('3', 'white', '8', 50, 200),
             ('4', 'white', '8', 50, 250),
             ('5', 'white', '8', 50, 300),
+            ('6', 'white', '8', 50, 350),
             ('单向入口', 'white', '8', 150, 100),
             ('单向出口', 'white', '8', 150, 150),
             ('单向出口', 'white', '8', 150, 200),
@@ -140,6 +141,10 @@ class Layouts:
             ('', '三辊闸机', 600, 100),
             ('', '翼闸', 600, 150),
             ('', '摆闸', 600, 200)
+        ]
+        self.ticket_mode = [
+            ('一票一客', '一票一客', 150, 350),
+            ('一票多客', '一票多客', 300, 350),
         ]
         # self.three = [
         #     ('COM1', 'COM1', 250, 100),
@@ -293,3 +298,6 @@ class Layouts:
 
     def fc_mode_n(self):
         return self.face_mode_n
+
+    def tk_mode(self):
+        return self.ticket_mode

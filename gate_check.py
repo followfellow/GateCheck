@@ -55,6 +55,7 @@ def change_to_frame3():
     fm3.frame_pack()
     fm3.label(frame3_number)
     fm3.radiobutton(gate_mode, read_parameters.gate_mode_var)
+    fm3.radiobutton(ticket_mode,read_parameters.ticket_mode_var)
 
 
 def change_to_frame4():
@@ -154,6 +155,7 @@ class Frame:
         par.dict['GateForm']['wing'] = read_parameters.wing_var.get()
         par.dict['GateForm']['swing'] = read_parameters.swing_var.get()
         par.dict['GateMode']['gate_mode'] = read_parameters.gate_mode_var.get()
+        par.dict['GateMode']['ticket_mode'] = read_parameters.ticket_mode_var.get()
         par.dict['Reader']['code_check'] = read_parameters.code_check_var.get()
         par.dict['Reader']['code_com'] = read_parameters.code_com_var.get()
         par.dict['Reader']['idcard_check'] = read_parameters.idcard_check_var.get()
@@ -287,7 +289,7 @@ if __name__ == '__main__':
     interface = layout.interfc()
     face_mode_1 = layout.fc_mode_1()
     face_mode_n = layout.fc_mode_n()
-
+    ticket_mode = layout.tk_mode()
     # </editor-fold>
     parameters = {
         "BasePar": {
@@ -307,6 +309,7 @@ if __name__ == '__main__':
         },
         "GateMode": {
             "gate_mode": "单向入口",
+            "ticket_mode": "一票多客",
         },
         "Reader": {
             "code_check": 1,
