@@ -191,8 +191,8 @@ class Layouts:
         #     ('COM4', 'COM4', 490, 150)
         # ]
         self.code_com = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
-        self.code_com_2 = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
-        self.code_com_3 = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
+        self.code_com_2 = ("None","ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
+        self.code_com_3 = ("None","ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
         self.idcard_set = [
             ('', 'synjo+RFID', 600, 360),
             # ('', 'synjo', 600, 350),
