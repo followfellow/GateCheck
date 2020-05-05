@@ -68,28 +68,32 @@ class Layouts:
         ]
         self.frame4_number = [
             ('1', 'white', '8', 50, 150),
-            ('1', 'white', '8', 50, 300),
+            ('2', 'white', '8', 50, 200),
+            ('3', 'white', '8', 50, 250),
+            ('1', 'white', '8', 50, 400),
             # ('2', 'white', '8', 50, 350),
-            ('2', 'white', '8', 50, 350),
+            ('2', 'white', '8', 50, 450),
             # ('4', 'white', '8', 50, 450),
             ('主二维码', 'white', '10', 150, 150),
-            ('新中新DJ1', 'white', '10', 150, 300),
+            ('二维码2', 'white', '10', 150, 200),
+            ('二维码3', 'white', '10', 150, 250),
+            ('新中新DJ1', 'white', '10', 150, 400),
             # ('新中新DJ2', 'white', '10', 150, 350),
-            ('中控1', 'white', '7', 150, 350),
+            ('中控1', 'white', '7', 150, 450),
             # ('中控2', 'white', '7', 150, 450),
-            ('身份证+RFID卡二合一', 'white', '18', 250, 300),
+            ('身份证+RFID卡二合一', 'white', '18', 250, 400),
             # ('身份证', 'white', '6', 250, 350),
-            ('身份证+RFID', 'white', '11', 250, 350),
+            ('身份证+RFID', 'white', '11', 250, 450),
             # ('身份证', 'white', '6', 250, 450),
             ('二维码门票阅读器配置', 'white', '20', 50, 70),
             ('序号', 'SkyBlue', '8', 50, 100),
             ('读卡器', 'SkyBlue', '10', 150, 100),
             ('读卡器串口号', 'SkyBlue', '44', 250, 100),
-            ('身份证阅读器配置', 'white', '16', 50, 220),
-            ('序号', 'SkyBlue', '8', 50, 250),
-            ('阅读器型号', 'SkyBlue', '10', 150, 250),
-            ('说明', 'SkyBlue', '44', 250, 250),
-            ('选择', 'SkyBlue', '8', 580, 250)
+            ('身份证阅读器配置', 'white', '16', 50, 320),
+            ('序号', 'SkyBlue', '8', 50, 350),
+            ('阅读器型号', 'SkyBlue', '10', 150, 350),
+            ('说明', 'SkyBlue', '44', 250, 350),
+            ('选择', 'SkyBlue', '8', 580, 350)
         ]
         self.frame5_number = [
             ('1', 'white', '8', 50, 100),
@@ -187,10 +191,12 @@ class Layouts:
         #     ('COM4', 'COM4', 490, 150)
         # ]
         self.code_com = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
+        self.code_com_2 = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
+        self.code_com_3 = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
         self.idcard_set = [
-            ('', 'synjo+RFID', 600, 300),
+            ('', 'synjo+RFID', 600, 400),
             # ('', 'synjo', 600, 350),
-            ('', 'zk1+RFID', 600, 350),
+            ('', 'zk1+RFID', 600, 450),
             # ('', 'zk2', 600, 450)
         ]
         # self.zkong_com = [
@@ -271,6 +277,12 @@ class Layouts:
 
     def cd_com(self):
         return self.code_com
+
+    def cd_com_2(self):
+        return self.code_com_2
+
+    def cd_com_3(self):
+        return self.code_com_3
 
     def id_set(self):
         return self.idcard_set

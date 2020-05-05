@@ -68,11 +68,13 @@ def change_to_frame4():
     if temp1 == 1:
         # fm4.radiobutton(code_com, read_parameters.code_com_var)
         fm4.combobox(250, 150, read_parameters.code_com_var, code_com)
+        fm4.combobox(250, 200, read_parameters.code_com_2_var, code_com_2)
+        fm4.combobox(250, 250, read_parameters.code_com_3_var, code_com_3)
     temp2 = read_parameters.idcard_check_var.get()
     if temp2 == 1:
         fm4.radiobutton(idcard_set, read_parameters.idcard_set_var)
         # fm4.radiobutton(zkong_com, read_parameters.zkong_com_var)
-        fm4.combobox(250, 400, read_parameters.zkong_com_var, zkong_com)
+        fm4.combobox(350, 450, read_parameters.zkong_com_var, zkong_com)
 
 
 def change_to_frame5():
@@ -158,6 +160,8 @@ class Frame:
         par.dict['GateMode']['ticket_mode'] = read_parameters.ticket_mode_var.get()
         par.dict['Reader']['code_check'] = read_parameters.code_check_var.get()
         par.dict['Reader']['code_com'] = read_parameters.code_com_var.get()
+        par.dict['Reader']['code_com_2'] = read_parameters.code_com_2_var.get()
+        par.dict['Reader']['code_com_3'] = read_parameters.code_com_3_var.get()
         par.dict['Reader']['idcard_check'] = read_parameters.idcard_check_var.get()
         par.dict['Reader']['idcard_set'] = read_parameters.idcard_set_var.get()
         par.dict['Reader']['zkong_com'] = read_parameters.zkong_com_var.get()
@@ -281,6 +285,8 @@ if __name__ == '__main__':
     code_check = layout.cd_check()
     idcard_check = layout.id_check()
     code_com = layout.cd_com()
+    code_com_2 = layout.cd_com_2()
+    code_com_3 = layout.cd_com_3()
     idcard_set = layout.id_set()
     zkong_com = layout.zk_com()
     screen = layout.scr()
@@ -315,6 +321,8 @@ if __name__ == '__main__':
             "code_check": 1,
             "idcard_check": 1,
             "code_com": "ttyS0",
+            "code_com_2": "ttyS4",
+            "code_com_3": "ttyS5",
             "idcard_set": "synjo+RFID",
             "zkong_com": "ttyS2",
         },
