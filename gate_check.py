@@ -74,7 +74,7 @@ def change_to_frame4():
     if temp2 == 1:
         fm4.radiobutton(idcard_set, read_parameters.idcard_set_var)
         # fm4.radiobutton(zkong_com, read_parameters.zkong_com_var)
-        fm4.combobox(350, 450, read_parameters.zkong_com_var, zkong_com)
+        fm4.combobox(350, 410, read_parameters.zkong_com_var, zkong_com)
 
 
 def change_to_frame5():
