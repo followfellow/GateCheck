@@ -55,7 +55,7 @@ def change_to_frame3():
     fm3.frame_pack()
     fm3.label(frame3_number)
     fm3.radiobutton(gate_mode, read_parameters.gate_mode_var)
-    fm3.radiobutton(ticket_mode,read_parameters.ticket_mode_var)
+    fm3.radiobutton(ticket_mode, read_parameters.ticket_mode_var)
 
 
 def change_to_frame4():
@@ -97,6 +97,12 @@ def change_to_frame6():
     # fm6.combobox(250,400,read_parameters.number_var,zhongkonglist)
 
 
+def change_to_frame7():
+    fm7.frame_pack()
+    fm7.label(frame7_number)
+    fm7.combobox(250, 100, read_parameters.ui_mode_var, ui_mode)
+    fm7.combobox(250, 150, read_parameters.temperature_var, temperature)
+
 class Frame:
     def __init__(self, master, canvas, tags='tags'):
 
@@ -108,7 +114,7 @@ class Frame:
         global button_image
         global img
 
-        self.tag_list = ['frame1', 'frame2', 'frame3', 'frame4', 'frame5', 'frame6']
+        self.tag_list = ['frame1', 'frame2', 'frame3', 'frame4', 'frame5', 'frame6', 'frame7']
         self.tag_list.remove(self.tags)
         for i in range(0, 5):
             self.canvas.delete(self.tag_list[i])
@@ -172,6 +178,8 @@ class Frame:
         # par.dict['Face']['num'] = read_parameters.number_var.get()
         par.dict['Face']['face_mode_1'] = read_parameters.face_mode_1_var.get()
         par.dict['Face']['face_mode_n'] = read_parameters.face_mode_n_var.get()
+        par.dict['UiMode']['ui_mode'] = read_parameters.ui_mode_var.get()
+        par.dict['UiMode']['temperature'] = read_parameters.temperature_var.get()
         par.save('params.json')
 
     def radiobutton(self, mode, var, cmd=None):
@@ -209,6 +217,7 @@ def click_button1():
     button4.config(fg='white')
     button5.config(fg='white')
     button6.config(fg='white')
+    button7.config(fg='white')
 
 
 def click_button2():
@@ -219,6 +228,7 @@ def click_button2():
     button4.config(fg='white')
     button5.config(fg='white')
     button6.config(fg='white')
+    button7.config(fg='white')
 
 
 def click_button3():
@@ -229,6 +239,7 @@ def click_button3():
     button4.config(fg='white')
     button5.config(fg='white')
     button6.config(fg='white')
+    button7.config(fg='white')
 
 
 def click_button4():
@@ -239,6 +250,7 @@ def click_button4():
     button3.config(fg='white')
     button5.config(fg='white')
     button6.config(fg='white')
+    button7.config(fg='white')
 
 
 def click_button5():
@@ -249,6 +261,7 @@ def click_button5():
     button3.config(fg='white')
     button4.config(fg='white')
     button6.config(fg='white')
+    button7.config(fg='white')
 
 
 def click_button6():
@@ -259,6 +272,18 @@ def click_button6():
     button3.config(fg='white')
     button4.config(fg='white')
     button5.config(fg='white')
+    button7.config(fg='white')
+
+
+def click_button7():
+    change_to_frame7()
+    button7.config(fg='yellow')
+    button1.config(fg='white')
+    button2.config(fg='white')
+    button3.config(fg='white')
+    button4.config(fg='white')
+    button5.config(fg='white')
+    button6.config(fg='white')
 
 
 if __name__ == '__main__':
@@ -277,6 +302,8 @@ if __name__ == '__main__':
     frame4_number = layout.fm4_number()
     frame5_number = layout.fm5_number()
     frame6_number = layout.fm6_number()
+    frame7_number = layout.fm7_number()
+
     gate_form = layout.gt_form()
     three = layout.thr()
     wing = layout.wng()
@@ -296,6 +323,8 @@ if __name__ == '__main__':
     face_mode_1 = layout.fc_mode_1()
     face_mode_n = layout.fc_mode_n()
     ticket_mode = layout.tk_mode()
+    ui_mode = layout.uii_mode()
+    temperature = layout.temper()
     # </editor-fold>
     parameters = {
         "BasePar": {
@@ -336,7 +365,11 @@ if __name__ == '__main__':
             "face_mode_1": 1,
             "face_mode_n": 1
             # "num": "ttyS2",
-        }
+        },
+        "UiMode": {
+            "ui_mode": "样式一",
+            "temperature": "None",
+        },
     }
     json_str = json.dumps(parameters, indent=4)
     # json_str = json.dumps(parameters, ensure_ascii=False,indent=4)
@@ -407,6 +440,11 @@ if __name__ == '__main__':
                         pady=0,
                         fg='white')
     button6.place(x=1, y=280)
+    button7 = tk.Button(image=tk_im, command=lambda: thread_it(click_button7), text='样式选择', compound='center',
+                        borderwidth=0, padx=0,
+                        pady=0,
+                        fg='white')
+    button7.place(x=1, y=320)
     # </editor-fold>
     fm1 = Frame(window, canvas, tags='frame1')
     fm2 = Frame(window, canvas, tags='frame2')
@@ -414,6 +452,7 @@ if __name__ == '__main__':
     fm4 = Frame(window, canvas, tags='frame4')
     fm5 = Frame(window, canvas, tags='frame5')
     fm6 = Frame(window, canvas, tags='frame6')
+    fm7 = Frame(window, canvas, tags='frame7')
     change_to_frame1()
 
     window.mainloop()

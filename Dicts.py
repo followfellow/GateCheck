@@ -141,6 +141,15 @@ class Layouts:
             ('项目名称', 'SkyBlue', '10', 150, 100),
             ('参数设置', 'SkyBlue', '44', 250, 100)
         ]
+        self.frame7_number = [
+            ('1', 'white', '8', 50, 100),
+            ('2', 'white', '8', 50, 150),
+            ('样式选择', 'white', '10', 150, 100),
+            ('测温模块', 'white', '10', 150, 150),
+            ('序号', 'SkyBlue', '8', 50, 50),
+            ('式样', 'SkyBlue', '10', 150, 50),
+            ('参数设置', 'SkyBlue', '44', 250, 50)
+        ]
         self.gate_form = [
             ('', '三辊闸机', 600, 100),
             ('', '翼闸', 600, 150),
@@ -229,6 +238,8 @@ class Layouts:
         self.face_mode_n = [
             ('1:N', 350, 250)
         ]
+        self.ui_mode = ("样式一", "样式二")
+        self.temperature = ("None", "lm")
 
     def bg_color(self):
         return self.background_color
@@ -253,6 +264,9 @@ class Layouts:
 
     def fm6_number(self):
         return self.frame6_number
+
+    def fm7_number(self):
+        return self.frame7_number
 
     def gt_form(self):
         return self.gate_form
@@ -313,3 +327,9 @@ class Layouts:
 
     def tk_mode(self):
         return self.ticket_mode
+
+    def uii_mode(self):
+        return self.ui_mode
+
+    def temper(self):
+        return self.temperature
