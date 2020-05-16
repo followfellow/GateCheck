@@ -94,6 +94,7 @@ def change_to_frame6():
         fm6.checkbutton(face_mode_1, read_parameters.face_mode_1_var, command=None)
         fm6.checkbutton(face_mode_n, read_parameters.face_mode_n_var, command=None)
         fm6.combobox(250, 300, read_parameters.rotate_var, rotate)
+        fm6.combobox(250, 350, read_parameters.index_var, index)
         # fm6.radiobutton(face_mode,read_parameters.face_mode_var)
     # fm6.combobox(250,400,read_parameters.number_var,zhongkonglist)
 
@@ -325,6 +326,7 @@ if __name__ == '__main__':
     face_mode_1 = layout.fc_mode_1()
     face_mode_n = layout.fc_mode_n()
     rotate = layout.rotat()
+    index=layout.idx()
     ticket_mode = layout.tk_mode()
     ui_mode = layout.uii_mode()
     temperature = layout.temper()
@@ -368,7 +370,7 @@ if __name__ == '__main__':
             "face_mode_1": 1,
             "face_mode_n": 1,
             "rotate": "clockwise0",
-            # "num": "ttyS2",
+            "index": "0",
         },
         "UiMode": {
             "ui_mode": "样式一",

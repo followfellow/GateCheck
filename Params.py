@@ -65,6 +65,7 @@ class ReadParameters():
         self.face_mode_1_var = tk.IntVar()
         self.face_mode_n_var = tk.IntVar()
         self.rotate_var = tk.StringVar()
+        self.index_var=tk.StringVar()
         self.ui_mode_var = tk.StringVar()
         self.temperature_var = tk.StringVar()
 
@@ -98,5 +99,6 @@ class ReadParameters():
         self.face_mode_1_var.set(par.dict['Face']['face_mode_1'])
         self.face_mode_n_var.set(par.dict['Face']['face_mode_n'])
         self.rotate_var.set(par.dict['Face']['rotate'])
+        self.index_var.set(par.dict['Face']['index'])
         self.ui_mode_var.set(par.dict['UiMode']['ui_mode'])
         self.temperature_var.set(par.dict['UiMode']['temperature'])

@@ -135,10 +135,12 @@ class Layouts:
             ('2', 'white', '8', 50, 200),
             ('3', 'white', '8', 50, 250),
             ('4', 'white', '8', 50, 300),
+            ('5', 'white', '8', 50, 350),
             ('人脸IP', 'white', '10', 150, 150),
             ('阈值', 'white', '10', 150, 200),
             ('类型', 'white', '10', 150, 250),
             ('旋转', 'white', '10', 150, 300),
+            ('index', 'white', '10', 150, 350),
             ('序号', 'SkyBlue', '8', 50, 100),
             ('项目名称', 'SkyBlue', '10', 150, 100),
             ('参数设置', 'SkyBlue', '44', 250, 100)
@@ -225,7 +227,7 @@ class Layouts:
             ('1:N', 350, 250)
         ]
         self.rotate = ("clockwise0", "clockwise90", "clockwise180", "clockwise270", "anticlockwise0", "anticlockwise90", "anticlockwise180", "anticlockwise270")
-        # self.rotate = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
+        self.index = ("0", "1","2","3")
         self.ui_mode = ("样式一", "样式二")
         self.temperature = ("None", "lm")
 
@@ -318,6 +320,9 @@ class Layouts:
 
     def tk_mode(self):
         return self.ticket_mode
+
+    def idx(self):
+        return self.index
 
     def uii_mode(self):
         return self.ui_mode
