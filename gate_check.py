@@ -93,6 +93,7 @@ def change_to_frame6():
         fm6.entry(250, 200, 40, read_parameters.threshold_var)
         fm6.checkbutton(face_mode_1, read_parameters.face_mode_1_var, command=None)
         fm6.checkbutton(face_mode_n, read_parameters.face_mode_n_var, command=None)
+        fm6.combobox(250, 300, read_parameters.rotate_var, rotate)
         # fm6.radiobutton(face_mode,read_parameters.face_mode_var)
     # fm6.combobox(250,400,read_parameters.number_var,zhongkonglist)
 
@@ -178,6 +179,7 @@ class Frame:
         # par.dict['Face']['num'] = read_parameters.number_var.get()
         par.dict['Face']['face_mode_1'] = read_parameters.face_mode_1_var.get()
         par.dict['Face']['face_mode_n'] = read_parameters.face_mode_n_var.get()
+        par.dict['Face']['rotate'] = read_parameters.rotate_var.get()
         par.dict['UiMode']['ui_mode'] = read_parameters.ui_mode_var.get()
         par.dict['UiMode']['temperature'] = read_parameters.temperature_var.get()
         par.save('params.json')
@@ -189,7 +191,7 @@ class Frame:
             rd.place(x=x, y=y)
 
     def combobox(self, x, y, number, value):
-        cb = ttk.Combobox(self.frame, width=12, textvariable=number)
+        cb = ttk.Combobox(self.frame, width=15, textvariable=number)
         cb['values'] = value
         # print(number.get())
         # print(value.index(number.get()))
@@ -318,10 +320,11 @@ if __name__ == '__main__':
     zkong_com = layout.zk_com()
     screen = layout.scr()
     face_check = layout.fc_check()
-    zhongkonglist = layout.zhkcom_list()
+    # zhongkonglist = layout.zhkcom_list()
     interface = layout.interfc()
     face_mode_1 = layout.fc_mode_1()
     face_mode_n = layout.fc_mode_n()
+    rotate = layout.rotat()
     ticket_mode = layout.tk_mode()
     ui_mode = layout.uii_mode()
     temperature = layout.temper()
@@ -363,7 +366,8 @@ if __name__ == '__main__':
             "face_ip": "192.168.0.0",
             "threshold": "50",
             "face_mode_1": 1,
-            "face_mode_n": 1
+            "face_mode_n": 1,
+            "rotate": "clockwise0",
             # "num": "ttyS2",
         },
         "UiMode": {

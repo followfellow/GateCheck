@@ -134,9 +134,11 @@ class Layouts:
             ('1', 'white', '8', 50, 150),
             ('2', 'white', '8', 50, 200),
             ('3', 'white', '8', 50, 250),
+            ('4', 'white', '8', 50, 300),
             ('人脸IP', 'white', '10', 150, 150),
             ('阈值', 'white', '10', 150, 200),
             ('类型', 'white', '10', 150, 250),
+            ('旋转', 'white', '10', 150, 300),
             ('序号', 'SkyBlue', '8', 50, 100),
             ('项目名称', 'SkyBlue', '10', 150, 100),
             ('参数设置', 'SkyBlue', '44', 250, 100)
@@ -159,26 +161,10 @@ class Layouts:
             ('一票一客', '一票一客', 150, 350),
             ('一票多客', '一票多客', 300, 350),
         ]
-        # self.three = [
-        #     ('COM1', 'COM1', 250, 100),
-        #     ('COM2', 'COM2', 330, 100),
-        #     ('COM3', 'COM3', 410, 100),
-        #     ('COM4', 'COM4', 490, 100)
-        # ]
         self.three = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
-        # self.wing = [
-        #     ('COM1', 'COM1', 250, 150),
-        #     ('COM2', 'COM2', 330, 150),
-        #     ('COM3', 'COM3', 410, 150),
-        #     ('COM4', 'COM4', 490, 150)
-        # ]
+
         self.wing = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
-        # self.swing = [
-        #     ('COM1', 'COM1', 250, 200),
-        #     ('COM2', 'COM2', 330, 200),
-        #     ('COM3', 'COM3', 410, 200),
-        #     ('COM4', 'COM4', 490, 200)
-        # ]
+
         self.swing = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
         self.gate_mode = [
             ('', '单向入口', 600, 100),
@@ -238,6 +224,8 @@ class Layouts:
         self.face_mode_n = [
             ('1:N', 350, 250)
         ]
+        self.rotate = ("clockwise0", "clockwise90", "clockwise180", "clockwise270", "anticlockwise0", "anticlockwise90", "anticlockwise180", "anticlockwise270")
+        # self.rotate = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
         self.ui_mode = ("样式一", "样式二")
         self.temperature = ("None", "lm")
 
@@ -324,6 +312,9 @@ class Layouts:
 
     def fc_mode_n(self):
         return self.face_mode_n
+
+    def rotat(self):
+        return self.rotate
 
     def tk_mode(self):
         return self.ticket_mode
