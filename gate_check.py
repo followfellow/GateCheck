@@ -181,6 +181,7 @@ class Frame:
         par.dict['Face']['face_mode_1'] = read_parameters.face_mode_1_var.get()
         par.dict['Face']['face_mode_n'] = read_parameters.face_mode_n_var.get()
         par.dict['Face']['rotate'] = read_parameters.rotate_var.get()
+        par.dict['Face']['index'] = read_parameters.index_var.get()
         par.dict['UiMode']['ui_mode'] = read_parameters.ui_mode_var.get()
         par.dict['UiMode']['temperature'] = read_parameters.temperature_var.get()
         par.save('params.json')
