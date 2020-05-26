@@ -36,12 +36,14 @@ class Layouts:
             ('1', 'white', '8', 50, 100),
             ('2', 'white', '8', 50, 150),
             ('3', 'white', '8', 50, 200),
-            ('三辊闸机', 'white', '10', 150, 100),
-            ('翼门闸机', 'white', '10', 150, 150),
-            ('摆门闸机', 'white', '10', 150, 200),
+            ('4', 'white', '8', 50, 250),
+            ('三辊闸机V1.0', 'white', '10', 150, 100),
+            ('翼门闸机V1.0', 'white', '10', 150, 150),
+            ('摆门闸机V1.0', 'white', '10', 150, 200),
+            ('摆门闸机V2.0', 'white', '10', 150, 250),
             ('序号', 'SkyBlue', '8', 50, 50),
-            ('闸机型式', 'SkyBlue', '10', 150, 50),
-            ('闸机控制器串口号', 'SkyBlue', '44', 250, 50),
+            ('闸机型式', 'SkyBlue', '20', 150, 50),
+            ('闸机控制器串口号', 'SkyBlue', '30', 350, 50),
             ('选择', 'SkyBlue', '8', 580, 50)
         ]
         self.frame3_number = [
@@ -157,7 +159,8 @@ class Layouts:
         self.gate_form = [
             ('', '三辊闸机', 600, 100),
             ('', '翼闸', 600, 150),
-            ('', '摆闸', 600, 200)
+            ('', '摆闸', 600, 200),
+            ('', '摆闸二', 600, 250)
         ]
         self.ticket_mode = [
             ('一票一客', '一票一客', 150, 350),
@@ -168,6 +171,7 @@ class Layouts:
         self.wing = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
 
         self.swing = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
+        self.swing_2 = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
         self.gate_mode = [
             ('', '单向入口', 600, 100),
             ('', '单出计数', 600, 150),
@@ -269,6 +273,9 @@ class Layouts:
 
     def swg(self):
         return self.swing
+
+    def swg_2(self):
+        return self.swing_2
 
     def gt_mode(self):
         return self.gate_mode
