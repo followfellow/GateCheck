@@ -138,11 +138,13 @@ class Layouts:
             ('3', 'white', '8', 50, 250),
             ('4', 'white', '8', 50, 300),
             ('5', 'white', '8', 50, 350),
+            ('6', 'white', '8', 50, 400),
             ('人脸IP', 'white', '10', 150, 150),
             ('阈值', 'white', '10', 150, 200),
             ('类型', 'white', '10', 150, 250),
             ('旋转', 'white', '10', 150, 300),
             ('index', 'white', '10', 150, 350),
+            ('补光灯', 'white', '10', 150, 400),
             ('序号', 'SkyBlue', '8', 50, 100),
             ('项目名称', 'SkyBlue', '10', 150, 100),
             ('参数设置', 'SkyBlue', '44', 250, 100)
@@ -192,8 +194,8 @@ class Layouts:
         #     ('COM4', 'COM4', 490, 150)
         # ]
         self.code_com = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
-        self.code_com_2 = ("None","ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
-        self.code_com_3 = ("None","ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
+        self.code_com_2 = ("None", "ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
+        self.code_com_3 = ("None", "ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
         self.idcard_set = [
             ('', 'synjo+RFID', 600, 360),
             # ('', 'synjo', 600, 350),
@@ -230,8 +232,13 @@ class Layouts:
         self.face_mode_n = [
             ('1:N', 350, 250)
         ]
-        self.rotate = ("clockwise0", "clockwise90", "clockwise180", "clockwise270", "anticlockwise0", "anticlockwise90", "anticlockwise180", "anticlockwise270")
-        self.index = ("0", "1","2","3")
+        self.light_default = [
+            ('on', 'on', 250, 400),
+            ('off', 'off', 350, 400),
+        ]
+        self.rotate = ("clockwise0", "clockwise90", "clockwise180", "clockwise270", "anticlockwise0", "anticlockwise90",
+                       "anticlockwise180", "anticlockwise270")
+        self.index = ("0", "1", "2", "3")
         self.ui_mode = ("样式一", "样式二")
         self.temperature = ("None", "lm")
 
@@ -321,6 +328,9 @@ class Layouts:
 
     def fc_mode_n(self):
         return self.face_mode_n
+
+    def light_dflt(self):
+        return self.light_default
 
     def rotat(self):
         return self.rotate

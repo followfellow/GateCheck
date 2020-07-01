@@ -96,7 +96,7 @@ def change_to_frame6():
         fm6.checkbutton(face_mode_n, read_parameters.face_mode_n_var, command=None)
         fm6.combobox(250, 300, read_parameters.rotate_var, rotate)
         fm6.combobox(250, 350, read_parameters.index_var, index)
-        # fm6.radiobutton(face_mode,read_parameters.face_mode_var)
+        fm6.radiobutton(light_default, read_parameters.light_default_var)
     # fm6.combobox(250,400,read_parameters.number_var,zhongkonglist)
 
 
@@ -105,6 +105,7 @@ def change_to_frame7():
     fm7.label(frame7_number)
     fm7.combobox(250, 100, read_parameters.ui_mode_var, ui_mode)
     fm7.combobox(250, 150, read_parameters.temperature_var, temperature)
+
 
 class Frame:
     def __init__(self, master, canvas, tags='tags'):
@@ -182,6 +183,7 @@ class Frame:
         # par.dict['Face']['num'] = read_parameters.number_var.get()
         par.dict['Face']['face_mode_1'] = read_parameters.face_mode_1_var.get()
         par.dict['Face']['face_mode_n'] = read_parameters.face_mode_n_var.get()
+        par.dict['Face']['light_default'] = read_parameters.light_default_var.get()
         par.dict['Face']['rotate'] = read_parameters.rotate_var.get()
         par.dict['Face']['index'] = read_parameters.index_var.get()
         par.dict['UiMode']['ui_mode'] = read_parameters.ui_mode_var.get()
@@ -329,8 +331,9 @@ if __name__ == '__main__':
     interface = layout.interfc()
     face_mode_1 = layout.fc_mode_1()
     face_mode_n = layout.fc_mode_n()
+    light_default = layout.light_dflt()
     rotate = layout.rotat()
-    index=layout.idx()
+    index = layout.idx()
     ticket_mode = layout.tk_mode()
     ui_mode = layout.uii_mode()
     temperature = layout.temper()
@@ -376,6 +379,7 @@ if __name__ == '__main__':
             "face_mode_n": 1,
             "rotate": "clockwise0",
             "index": "0",
+            "light_default": "off"
         },
         "UiMode": {
             "ui_mode": "样式一",
