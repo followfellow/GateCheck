@@ -390,12 +390,17 @@ if __name__ == '__main__':
     # json_str = json.dumps(parameters, ensure_ascii=False,indent=4)
     if os.path.isfile('params.json'):
         try:
-            with open('params.json', 'r') as f:
-                a = json.load(f)
             par = Params('params.json')
             read_parameters = ReadParameters()
             read_parameters.read_params(par)
-        except:
+        except Exception as e:
+            with open('params.json','r') as fi:
+                dict_pre=json.load(fi)
+            for i in dict_pre.keys():
+                for j in dict_pre[i].keys():
+                    parameters[i][j]=dict_pre[i][j]
+                    pass
+            json_str = json.dumps(parameters, indent=4)
             with open('params.json', 'w') as f:  # 创建一个params.json文件
                 f.write(json_str)  # 将json_str写到文件中
             par = Params('params.json')
