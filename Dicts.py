@@ -37,10 +37,12 @@ class Layouts:
             ('2', 'white', '8', 50, 150),
             ('3', 'white', '8', 50, 200),
             ('4', 'white', '8', 50, 250),
+            ('附', 'white', '8', 50, 300),
             ('三辊闸机V1.0', 'white', '10', 150, 100),
             ('翼门闸机V1.0', 'white', '10', 150, 150),
             ('摆门闸机V1.0', 'white', '10', 150, 200),
             ('摆门闸机V2.0', 'white', '10', 150, 250),
+            ('人工放行功能', 'white', '10', 150, 300),
             ('序号', 'SkyBlue', '8', 50, 50),
             ('闸机型式', 'SkyBlue', '20', 150, 50),
             ('闸机控制器串口号', 'SkyBlue', '30', 350, 50),
@@ -164,6 +166,10 @@ class Layouts:
             ('', '摆闸', 600, 200),
             ('', '摆闸二', 600, 250)
         ]
+        self.local_card = [
+            ('开', '开', 350, 300),
+            ('关', '关', 450, 300)
+        ]
         self.ticket_mode = [
             ('一票一客', '一票一客', 150, 350),
             ('一票多客', '一票多客', 300, 350),
@@ -247,6 +253,9 @@ class Layouts:
 
     def tst_mode(self):
         return self.testing_mode
+
+    def lc_card(self):
+        return self.local_card
 
     def fm1_number(self):
         return self.frame1_number

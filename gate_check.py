@@ -50,6 +50,7 @@ def change_to_frame2():
     fm2.combobox(350, 150, read_parameters.wing_var, wing)
     fm2.combobox(350, 200, read_parameters.swing_var, swing)
     fm2.combobox(350, 250, read_parameters.swing_2_var, swing_2)
+    fm2.radiobutton(local_card, read_parameters.local_card_var)
 
 
 def change_to_frame3():
@@ -167,6 +168,7 @@ class Frame:
         par.dict['GateForm']['wing'] = read_parameters.wing_var.get()
         par.dict['GateForm']['swing'] = read_parameters.swing_var.get()
         par.dict['GateForm']['swing_2'] = read_parameters.swing_2_var.get()
+        par.dict['GateForm']['local_card'] = read_parameters.local_card_var.get()
         par.dict['GateMode']['gate_mode'] = read_parameters.gate_mode_var.get()
         par.dict['GateMode']['ticket_mode'] = read_parameters.ticket_mode_var.get()
         par.dict['Reader']['code_check'] = read_parameters.code_check_var.get()
@@ -318,6 +320,7 @@ if __name__ == '__main__':
     swing = layout.swg()
     swing_2 = layout.swg_2()
     gate_mode = layout.gt_mode()
+    local_card = layout.lc_card()
     code_check = layout.cd_check()
     idcard_check = layout.id_check()
     code_com = layout.cd_com()
@@ -354,6 +357,7 @@ if __name__ == '__main__':
             "wing": "ttyS1",
             "swing": "ttyS1",
             "swing_2": "ttyS1",
+            "local_card": "关"
         },
         "GateMode": {
             "gate_mode": "单向入口",
@@ -394,12 +398,11 @@ if __name__ == '__main__':
             read_parameters = ReadParameters()
             read_parameters.read_params(par)
         except Exception as e:
-            with open('params.json','r') as fi:
-                dict_pre=json.load(fi)
+            with open('params.json', 'r') as fi:
+                dict_pre = json.load(fi)
             for i in dict_pre.keys():
                 for j in dict_pre[i].keys():
-                    parameters[i][j]=dict_pre[i][j]
-                    pass
+                    parameters[i][j] = dict_pre[i][j]
             json_str = json.dumps(parameters, indent=4)
             with open('params.json', 'w') as f:  # 创建一个params.json文件
                 f.write(json_str)  # 将json_str写到文件中
