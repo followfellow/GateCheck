@@ -174,6 +174,10 @@ class Layouts:
             ('一票一客', '一票一客', 150, 350),
             ('一票多客', '一票多客', 300, 350),
         ]
+        self.quality = [
+            ('高清', '高清', 150, 400),
+            ('标准', '标准', 300, 400),
+        ]
         self.three = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
 
         self.wing = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
@@ -295,6 +299,9 @@ class Layouts:
 
     def gt_mode(self):
         return self.gate_mode
+
+    def qua(self):
+        return self.quality
 
     def cd_check(self):
         return self.code_check

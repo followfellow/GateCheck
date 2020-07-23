@@ -58,7 +58,7 @@ def change_to_frame3():
     fm3.label(frame3_number)
     fm3.radiobutton(gate_mode, read_parameters.gate_mode_var)
     fm3.radiobutton(ticket_mode, read_parameters.ticket_mode_var)
-
+    fm3.radiobutton(quality,read_parameters.quality_var)
 
 def change_to_frame4():
     fm4.frame_pack()
@@ -164,6 +164,7 @@ class Frame:
         par.dict['BasePar']['GateNum'] = read_parameters.GateNum_var.get()
         par.dict['BasePar']['Interface'] = read_parameters.Interface_var.get()
         par.dict['GateForm']['gate_form'] = read_parameters.gate_form_var.get()
+
         par.dict['GateForm']['three'] = read_parameters.three_var.get()
         par.dict['GateForm']['wing'] = read_parameters.wing_var.get()
         par.dict['GateForm']['swing'] = read_parameters.swing_var.get()
@@ -171,6 +172,7 @@ class Frame:
         par.dict['GateForm']['local_card'] = read_parameters.local_card_var.get()
         par.dict['GateMode']['gate_mode'] = read_parameters.gate_mode_var.get()
         par.dict['GateMode']['ticket_mode'] = read_parameters.ticket_mode_var.get()
+        par.dict['GateMode']['quality'] = read_parameters.quality_var.get()
         par.dict['Reader']['code_check'] = read_parameters.code_check_var.get()
         par.dict['Reader']['code_com'] = read_parameters.code_com_var.get()
         par.dict['Reader']['code_com_2'] = read_parameters.code_com_2_var.get()
@@ -320,6 +322,7 @@ if __name__ == '__main__':
     swing = layout.swg()
     swing_2 = layout.swg_2()
     gate_mode = layout.gt_mode()
+    quality=layout.qua()
     local_card = layout.lc_card()
     code_check = layout.cd_check()
     idcard_check = layout.id_check()
@@ -362,6 +365,7 @@ if __name__ == '__main__':
         "GateMode": {
             "gate_mode": "单向入口",
             "ticket_mode": "一票多客",
+            "quality": "标准",
         },
         "Reader": {
             "code_check": 1,
