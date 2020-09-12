@@ -106,6 +106,7 @@ def change_to_frame7():
     fm7.label(frame7_number)
     fm7.combobox(250, 100, read_parameters.ui_mode_var, ui_mode)
     fm7.combobox(250, 150, read_parameters.temperature_var, temperature)
+    fm7.entry(250, 200, 10, read_parameters.interval_var)
 
 
 class Frame:
@@ -192,6 +193,7 @@ class Frame:
         par.dict['Face']['index'] = read_parameters.index_var.get()
         par.dict['UiMode']['ui_mode'] = read_parameters.ui_mode_var.get()
         par.dict['UiMode']['temperature'] = read_parameters.temperature_var.get()
+        par.dict['UiMode']['interval'] = read_parameters.interval_var.get()
         par.save('params.json')
 
     def radiobutton(self, mode, var, cmd=None):
@@ -392,6 +394,7 @@ if __name__ == '__main__':
         "UiMode": {
             "ui_mode": "样式一",
             "temperature": "None",
+            "interval": "2000",
         },
     }
     json_str = json.dumps(parameters, indent=4)

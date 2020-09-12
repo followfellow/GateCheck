@@ -72,6 +72,7 @@ class ReadParameters():
         self.index_var = tk.StringVar()
         self.ui_mode_var = tk.StringVar()
         self.temperature_var = tk.StringVar()
+        self.interval_var = tk.StringVar()
 
     def read_params(self, par):
         self.background_color_var.set(par.dict['BasePar']['image'])
@@ -110,3 +111,4 @@ class ReadParameters():
         self.index_var.set(par.dict['Face']['index'])
         self.ui_mode_var.set(par.dict['UiMode']['ui_mode'])
         self.temperature_var.set(par.dict['UiMode']['temperature'])
+        self.interval_var.set(par.dict['UiMode']['interval'])
