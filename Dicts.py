@@ -254,7 +254,7 @@ class Layouts:
                        "anticlockwise180", "anticlockwise270")
         self.index = ("0", "1", "2", "3")
         self.ui_mode = ("样式一", "样式二")
-        self.temperature = ("None", "lm")
+        self.temperature = ("None", "lm", "dm")
 
     def bg_color(self):
         return self.background_color
