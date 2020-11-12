@@ -51,6 +51,7 @@ def change_to_frame2():
     fm2.combobox(350, 200, read_parameters.swing_var, swing)
     fm2.combobox(350, 250, read_parameters.swing_2_var, swing_2)
     fm2.radiobutton(local_card, read_parameters.local_card_var)
+    fm2.radiobutton(pause, read_parameters.pause_var)
 
 
 def change_to_frame3():
@@ -58,7 +59,8 @@ def change_to_frame3():
     fm3.label(frame3_number)
     fm3.radiobutton(gate_mode, read_parameters.gate_mode_var)
     fm3.radiobutton(ticket_mode, read_parameters.ticket_mode_var)
-    fm3.radiobutton(quality,read_parameters.quality_var)
+    fm3.radiobutton(quality, read_parameters.quality_var)
+
 
 def change_to_frame4():
     fm4.frame_pack()
@@ -171,6 +173,7 @@ class Frame:
         par.dict['GateForm']['swing'] = read_parameters.swing_var.get()
         par.dict['GateForm']['swing_2'] = read_parameters.swing_2_var.get()
         par.dict['GateForm']['local_card'] = read_parameters.local_card_var.get()
+        par.dict['GateForm']['pause'] = read_parameters.pause_var.get()
         par.dict['GateMode']['gate_mode'] = read_parameters.gate_mode_var.get()
         par.dict['GateMode']['ticket_mode'] = read_parameters.ticket_mode_var.get()
         par.dict['GateMode']['quality'] = read_parameters.quality_var.get()
@@ -324,8 +327,9 @@ if __name__ == '__main__':
     swing = layout.swg()
     swing_2 = layout.swg_2()
     gate_mode = layout.gt_mode()
-    quality=layout.qua()
+    quality = layout.qua()
     local_card = layout.lc_card()
+    pause = layout.paus()
     code_check = layout.cd_check()
     idcard_check = layout.id_check()
     code_com = layout.cd_com()
@@ -362,7 +366,8 @@ if __name__ == '__main__':
             "wing": "ttyS1",
             "swing": "ttyS1",
             "swing_2": "ttyS1",
-            "local_card": "关"
+            "local_card": "关",
+            "pause": "关"
         },
         "GateMode": {
             "gate_mode": "单向入口",
