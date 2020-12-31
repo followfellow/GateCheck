@@ -37,14 +37,16 @@ class Layouts:
             ('2', 'white', '8', 50, 150),
             ('3', 'white', '8', 50, 200),
             ('4', 'white', '8', 50, 250),
-            ('附', 'white', '8', 50, 300),
+            ('5', 'white', '8', 50, 300),
             ('附', 'white', '8', 50, 350),
+            ('附', 'white', '8', 50, 400),
             ('三辊闸机V1.0', 'white', '12', 160, 100),
             ('翼门闸机V1.0', 'white', '12', 160, 150),
             ('摆门闸机V1.0', 'white', '12', 160, 200),
             ('摆门闸机V2.0', 'white', '12', 160, 250),
-            ('人工放行功能', 'white', '12', 160, 300),
-            ('暂停票功能', 'white', '11', 160, 350),
+            ('摆门闸机加密', 'white', '12', 160, 300),
+            ('人工放行功能', 'white', '12', 160, 350),
+            ('暂停票功能', 'white', '11', 160, 400),
             ('序号', 'SkyBlue', '8', 50, 50),
             ('闸机型式', 'SkyBlue', '20', 150, 50),
             ('闸机控制器串口号', 'SkyBlue', '30', 350, 50),
@@ -171,15 +173,16 @@ class Layouts:
             ('', '三辊闸机', 600, 100),
             ('', '翼闸', 600, 150),
             ('', '摆闸', 600, 200),
-            ('', '摆闸二', 600, 250)
+            ('', '摆闸二', 600, 250),
+            ('', '摆闸加密', 600, 300)
         ]
         self.local_card = [
-            ('开', '开', 350, 300),
-            ('关', '关', 450, 300)
-        ]
-        self.pause = [
             ('开', '开', 350, 350),
             ('关', '关', 450, 350)
+        ]
+        self.pause = [
+            ('开', '开', 350, 400),
+            ('关', '关', 450, 400)
         ]
         self.ticket_mode = [
             ('一票一客', '一票一客', 250, 350),
@@ -196,6 +199,7 @@ class Layouts:
 
         self.swing = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
         self.swing_2 = ("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
+        self.swing_code=("ttyS0", "ttyS1", "ttyS2", "ttyS3", "ttyS4", "ttyS5", "ttyS6", "ttyS7")
         self.gate_mode = [
             ('', '单向入口', 600, 100),
             ('', '单出计数', 600, 150),
@@ -311,6 +315,9 @@ class Layouts:
 
     def swg_2(self):
         return self.swing_2
+
+    def swg_code(self):
+        return self.swing_code
 
     def gt_mode(self):
         return self.gate_mode

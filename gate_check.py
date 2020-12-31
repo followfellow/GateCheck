@@ -50,6 +50,7 @@ def change_to_frame2():
     fm2.combobox(350, 150, read_parameters.wing_var, wing)
     fm2.combobox(350, 200, read_parameters.swing_var, swing)
     fm2.combobox(350, 250, read_parameters.swing_2_var, swing_2)
+    fm2.combobox(350, 300, read_parameters.swing_code_var, swing_code)
     fm2.radiobutton(local_card, read_parameters.local_card_var)
     fm2.radiobutton(pause, read_parameters.pause_var)
 
@@ -326,6 +327,7 @@ if __name__ == '__main__':
     wing = layout.wng()
     swing = layout.swg()
     swing_2 = layout.swg_2()
+    swing_code=layout.swg_code()
     gate_mode = layout.gt_mode()
     quality = layout.qua()
     local_card = layout.lc_card()
@@ -366,6 +368,7 @@ if __name__ == '__main__':
             "wing": "ttyS1",
             "swing": "ttyS1",
             "swing_2": "ttyS1",
+            "swing_code": "ttyS1",
             "local_card": "关",
             "pause": "关"
         },
