@@ -173,6 +173,7 @@ class Frame:
         par.dict['GateForm']['wing'] = read_parameters.wing_var.get()
         par.dict['GateForm']['swing'] = read_parameters.swing_var.get()
         par.dict['GateForm']['swing_2'] = read_parameters.swing_2_var.get()
+        par.dict['GateForm']['swing_code'] = read_parameters.swing_code_var.get()
         par.dict['GateForm']['local_card'] = read_parameters.local_card_var.get()
         par.dict['GateForm']['pause'] = read_parameters.pause_var.get()
         par.dict['GateMode']['gate_mode'] = read_parameters.gate_mode_var.get()
