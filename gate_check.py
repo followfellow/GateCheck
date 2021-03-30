@@ -225,7 +225,7 @@ def thread_it(func, *args):
     # 启动
     t.start()
     # 阻塞--卡死界面！
-    # t.join()
+    # t.join()6
 
 
 def click_button1():
@@ -414,17 +414,24 @@ if __name__ == '__main__':
             read_parameters = ReadParameters()
             read_parameters.read_params(par)
         except Exception as e:
-            with open('params.json', 'r') as fi:
-                dict_pre = json.load(fi)
-            for i in dict_pre.keys():
-                for j in dict_pre[i].keys():
-                    parameters[i][j] = dict_pre[i][j]
-            json_str = json.dumps(parameters, indent=4)
-            with open('params.json', 'w') as f:  # 创建一个params.json文件
-                f.write(json_str)  # 将json_str写到文件中
-            par = Params('params.json')
-            read_parameters = ReadParameters()
-            read_parameters.read_params(par)
+            try:
+                with open('params.json', 'r') as fi:
+                    dict_pre = json.load(fi)
+                for i in dict_pre.keys():
+                    for j in dict_pre[i].keys():
+                        parameters[i][j] = dict_pre[i][j]
+                json_str = json.dumps(parameters, indent=4)
+                with open('params.json', 'w') as f:  # 创建一个params.json文件
+                    f.write(json_str)  # 将json_str写到文件中
+                par = Params('params.json')
+                read_parameters = ReadParameters()
+                read_parameters.read_params(par)
+            except:
+                with open('params.json', 'w') as f:  # 创建一个params.json文件
+                    f.write(json_str)  # 将json_str写到文件中
+                par = Params('params.json')
+                read_parameters = ReadParameters()
+                read_parameters.read_params(par)
     else:
         with open('params.json', 'w') as f:  # 创建一个params.json文件
             f.write(json_str)  # 将json_str写到文件中
