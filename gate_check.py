@@ -401,8 +401,8 @@ if __name__ == '__main__':
             "face_mode_n": 1,
             "rotate": "clockwise0",
             "index": "0",
-            "algorithm": "0",
-            "light_default": "off"
+            "light_default": "off",
+            "algorithm": "opencv",
         },
         "UiMode": {
             "ui_mode": "样式一",

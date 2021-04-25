@@ -276,7 +276,7 @@ class Layouts:
         self.rotate = ("clockwise0", "clockwise90", "clockwise180", "clockwise270", "anticlockwise0", "anticlockwise90",
                        "anticlockwise180", "anticlockwise270")
         self.index = ("0", "1", "2", "3")
-        self.algorithm = ("0", "1")
+        self.algorithm = ("opencv", "dlib")
         self.ui_mode = ("样式一", "样式二")
         self.temperature = ("None", "lm", "dm")
 
