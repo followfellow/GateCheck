@@ -155,12 +155,14 @@ class Layouts:
             ('4', 'white', '8', 50, 300),
             ('5', 'white', '8', 50, 350),
             ('6', 'white', '8', 50, 400),
+            ('7', 'white', '8', 50, 450),
             ('人脸IP', 'white', '10', 150, 150),
             ('阈值', 'white', '10', 150, 200),
             ('类型', 'white', '10', 150, 250),
             ('旋转', 'white', '10', 150, 300),
             ('index', 'white', '10', 150, 350),
             ('补光灯', 'white', '10', 150, 400),
+            ('算法', 'white', '10', 150, 450),
             ('序号', 'SkyBlue', '8', 50, 100),
             ('项目名称', 'SkyBlue', '10', 150, 100),
             ('参数设置', 'SkyBlue', '44', 250, 100)
@@ -274,6 +276,7 @@ class Layouts:
         self.rotate = ("clockwise0", "clockwise90", "clockwise180", "clockwise270", "anticlockwise0", "anticlockwise90",
                        "anticlockwise180", "anticlockwise270")
         self.index = ("0", "1", "2", "3")
+        self.algorithm = ("0", "1")
         self.ui_mode = ("样式一", "样式二")
         self.temperature = ("None", "lm", "dm")
 
@@ -387,6 +390,9 @@ class Layouts:
 
     def idx(self):
         return self.index
+
+    def alg(self):
+        return self.algorithm
 
     def uii_mode(self):
         return self.ui_mode

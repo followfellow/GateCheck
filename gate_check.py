@@ -101,6 +101,7 @@ def change_to_frame6():
         fm6.combobox(250, 300, read_parameters.rotate_var, rotate)
         fm6.combobox(250, 350, read_parameters.index_var, index)
         fm6.radiobutton(light_default, read_parameters.light_default_var)
+        fm6.combobox(250, 450, read_parameters.algorithm_var, algorithm)
     # fm6.combobox(250,400,read_parameters.number_var,zhongkonglist)
 
 
@@ -196,6 +197,7 @@ class Frame:
         par.dict['Face']['light_default'] = read_parameters.light_default_var.get()
         par.dict['Face']['rotate'] = read_parameters.rotate_var.get()
         par.dict['Face']['index'] = read_parameters.index_var.get()
+        par.dict['Face']['algorithm'] = read_parameters.algorithm_var.get()
         par.dict['UiMode']['ui_mode'] = read_parameters.ui_mode_var.get()
         par.dict['UiMode']['temperature'] = read_parameters.temperature_var.get()
         par.dict['UiMode']['interval'] = read_parameters.interval_var.get()
@@ -349,6 +351,7 @@ if __name__ == '__main__':
     light_default = layout.light_dflt()
     rotate = layout.rotat()
     index = layout.idx()
+    algorithm = layout.alg()
     ticket_mode = layout.tk_mode()
     ui_mode = layout.uii_mode()
     temperature = layout.temper()
@@ -398,6 +401,7 @@ if __name__ == '__main__':
             "face_mode_n": 1,
             "rotate": "clockwise0",
             "index": "0",
+            "algorithm": "0",
             "light_default": "off"
         },
         "UiMode": {
