@@ -43,14 +43,12 @@ def change_to_frame2():
     # fm2.image(0, 0, 'images/3.1.jpg')
     fm2.label(frame2_number)
     fm2.radiobutton(gate_form, read_parameters.gate_form_var)
-    # fm2.radiobutton(three, read_parameters.three_var)
-    # fm2.radiobutton(wing, read_parameters.wing_var)
-    # fm2.radiobutton(swing, read_parameters.swing_var)
     fm2.combobox(350, 100, read_parameters.three_var, three)
     fm2.combobox(350, 150, read_parameters.wing_var, wing)
     fm2.combobox(350, 200, read_parameters.swing_var, swing)
     fm2.combobox(350, 250, read_parameters.swing_2_var, swing_2)
     fm2.combobox(350, 300, read_parameters.swing_code_var, swing_code)
+    fm2.combobox(350, 350, read_parameters.three_code_var, three_code)
     fm2.radiobutton(local_card, read_parameters.local_card_var)
     fm2.radiobutton(pause, read_parameters.pause_var)
 
@@ -79,7 +77,8 @@ def change_to_frame4():
     if temp2 == 1:
         fm4.radiobutton(idcard_set, read_parameters.idcard_set_var)
         # fm4.radiobutton(zkong_com, read_parameters.zkong_com_var)
-        fm4.combobox(350, 410, read_parameters.zkong_com_var, zkong_com)
+        fm4.combobox(350, 400, read_parameters.zkong_com_var, zkong_com)
+        fm4.combobox(260, 500, read_parameters.beep_var, beep)
 
 
 def change_to_frame5():
@@ -175,6 +174,7 @@ class Frame:
         par.dict['GateForm']['swing'] = read_parameters.swing_var.get()
         par.dict['GateForm']['swing_2'] = read_parameters.swing_2_var.get()
         par.dict['GateForm']['swing_code'] = read_parameters.swing_code_var.get()
+        par.dict['GateForm']['three_code'] = read_parameters.three_code_var.get()
         par.dict['GateForm']['local_card'] = read_parameters.local_card_var.get()
         par.dict['GateForm']['pause'] = read_parameters.pause_var.get()
         par.dict['GateMode']['gate_mode'] = read_parameters.gate_mode_var.get()
@@ -187,6 +187,7 @@ class Frame:
         par.dict['Reader']['idcard_check'] = read_parameters.idcard_check_var.get()
         par.dict['Reader']['idcard_set'] = read_parameters.idcard_set_var.get()
         par.dict['Reader']['zkong_com'] = read_parameters.zkong_com_var.get()
+        par.dict['Reader']['beep'] = read_parameters.beep_var.get()
         par.dict['Screen']['screen'] = read_parameters.screen_var.get()
         par.dict['Face']['face_check'] = read_parameters.face_check_var.get()
         par.dict['Face']['face_ip'] = read_parameters.face_ip_var.get()
@@ -312,7 +313,6 @@ if __name__ == '__main__':
     window.title('GateCheck')
     window.geometry('800x600')
     window.resizable(False, False)
-
     layout = Layouts()
     # <editor-fold desc="read_layouts">
     background_color = layout.bg_color()
@@ -331,6 +331,7 @@ if __name__ == '__main__':
     swing = layout.swg()
     swing_2 = layout.swg_2()
     swing_code=layout.swg_code()
+    three_code=layout.thr_code()
     gate_mode = layout.gt_mode()
     quality = layout.qua()
     local_card = layout.lc_card()
@@ -342,6 +343,7 @@ if __name__ == '__main__':
     code_com_3 = layout.cd_com_3()
     idcard_set = layout.id_set()
     zkong_com = layout.zk_com()
+    beep = layout.bep()
     screen = layout.scr()
     face_check = layout.fc_check()
     # zhongkonglist = layout.zhkcom_list()
@@ -373,6 +375,7 @@ if __name__ == '__main__':
             "swing": "ttyS1",
             "swing_2": "ttyS1",
             "swing_code": "ttyS1",
+            "three_code": "ttyS1",
             "local_card": "关",
             "pause": "关"
         },
@@ -389,6 +392,7 @@ if __name__ == '__main__':
             "code_com_3": "None",
             "idcard_set": "synjo+RFID",
             "zkong_com": "ttyS2",
+            "beep":"no",
         },
         "Screen": {
             "screen": "6.5_800*600",
